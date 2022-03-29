@@ -1,0 +1,3314 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BaiduMapAPI.SDK</name>
+    </assembly>
+    <members>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.Driving">
+            <summary>
+            驾车路线规划
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.Origin">
+            <summary>
+            起点经纬度
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.Destination">
+            <summary>
+            终点
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.OriginUid">
+            <summary>
+            起点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.DestinationUid">
+            <summary>
+            终点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.PlateNumber">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.Waypoints">
+            <summary>
+            途经点
+            <para>支持5个以内的有序途径点。多个途径点坐标按顺序以英文竖线符号分隔</para>
+            <para>示例： 40.465,116.314|40.232,116.352|40.121,116.453</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.Tactics">
+            <summary>
+            路线偏好
+            <para>默认值：0</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.GpsDirection">
+            <summary>
+            起点的定位方向
+            <para>车头方向为与正北方向顺时针夹角，取值范围[0,359]。</para>
+            <para>该参数用于辅助判断起点所在正逆向车道，提高算路准确率。 当speed>1.5米/秒且gps_direction存在时，采用该方向。</para>
+            <para>gps_direction并不代表需填写从gps获取的方向，可以填入校正后的方向。请填写尽量准确的方向，其准确性很大程度决定了计算的精度。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.radius">
+            <summary>
+            起点的定位精度
+            <para>配合gps_direction字段使用，取值范围[0,2000]</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.Speed">
+            <summary>
+            起点车辆的行驶速度
+            <para>配合gps_direction字段使用</para>
+            <para>单位：米/秒</para>
+            <para>当speed>1.5米/秒且gps_direction存在时，采用gps_direction的方向</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.CoordType">
+            <summary>
+            输入坐标类型
+            <para>默认bd09ll</para>
+            <para>允许的值为： bd09ll：百度经纬度坐标;bd09mc：百度墨卡托坐标;gcj02：国测局加密坐标;wgs84：gps设备获取的坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.RetCoordType">
+            <summary>
+            输出坐标类型
+            <para>返回值的坐标类型，默认为百度经纬度坐标：bd09ll</para>
+            <para>可选值： bd09ll：百度经纬度坐标;gcj02：国测局加密坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Driving.Timestamp">
+            <summary>
+            时间戳，与SN配合使用
+            <para>SN存在时必填</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResult">
+            <summary>
+            驾车规划返回参数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResult.Result">
+            <summary>
+            结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultResult.Origin">
+            <summary>
+            起点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultResult.Destination">
+            <summary>
+            终点
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultResult.Routes">
+            <summary>
+            返回的方案集
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultRoute.Distance">
+            <summary>
+            方案距离
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultRoute.Duration">
+            <summary>
+            线路耗时
+            <para>单位：秒</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultRoute.Toll">
+            <summary>
+            路线的过路费预估
+            <para>单位：元</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultRoute.TrafficCondition">
+            <summary>
+            路线的整体路况评价
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultRoute.Steps">
+            <summary>
+            路线分段
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.LegIndex">
+            <summary>
+            途径点序号
+            <para>途径点序号为从0开始的整数，用于标识step所属的途径点路段</para>
+            <para>如：若该step属于起点至第一个途径中的路段，则其leg_index为0</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.Direction">
+            <summary>
+            进入道路的角度
+            <para>角度为与正北方向顺时针夹角</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.Turn">
+            <summary>
+            机动转向点
+            <para>包括基准八个方向、环岛、分歧等</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.Distance">
+            <summary>
+            路段距离
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.Duration">
+            <summary>
+            路段耗时
+            <para>单位：秒</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.RoadType">
+            <summary>
+            分段的道路类型
+            <para>该字段后续将废弃，由road_types代替</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.RoadTypes">
+            <summary>
+            路段途径的道路类型列表
+            <para>若途经多个路段类别，将用英文逗号","分隔</para>
+            <para>如：- 该路段依次途经国道和省道两种道路类型，则road_types:"2,3"</para>
+            <para>该路段仅途经高速，则road_types:"0"</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.Instruction">
+            <summary>
+            路段描述
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.StartLocation">
+            <summary>
+            分段起点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.EndLocation">
+            <summary>
+            分段终点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.Paths">
+            <summary>
+            分段坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultStep.TrafficCondition">
+            <summary>
+            分段路况详情
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultTrafficCondition.Status">
+            <summary>
+            路况指数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.DrivingResultTrafficCondition.GeoCount">
+            <summary>
+            路况相同的坐标点个数
+            <para>从当前坐标点开始，path中路况相同的坐标点个数</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.Riding">
+            <summary>
+            骑行路线规划
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.Origin">
+            <summary>
+            起点经纬度
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.Destination">
+            <summary>
+            终点
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.OriginUid">
+            <summary>
+            起点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.DestinationUid">
+            <summary>
+            终点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.RidingType">
+            <summary>
+            骑行类型
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.CoordType">
+            <summary>
+            输入坐标类型
+            <para>默认bd09ll</para>
+            <para>允许的值为： bd09ll：百度经纬度坐标;bd09mc：百度墨卡托坐标;gcj02：国测局加密坐标;wgs84：gps设备获取的坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.RetCoordType">
+            <summary>
+            输出坐标类型
+            <para>返回值的坐标类型，默认为百度经纬度坐标：bd09ll</para>
+            <para>可选值： bd09ll：百度经纬度坐标;gcj02：国测局加密坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Riding.Timestamp">
+            <summary>
+            时间戳，与SN配合使用
+            <para>SN存在时必填</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.RidingResult">
+            <summary>
+            骑行规划返回参数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.RidingResult.Result">
+            <summary>
+            返回的结果
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.Transit">
+            <summary>
+            公交路线规划
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.Origin">
+            <summary>
+            起点经纬度
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.Destination">
+            <summary>
+            终点
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.OriginUid">
+            <summary>
+            起点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.DestinationUid">
+            <summary>
+            终点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.CoordType">
+            <summary>
+            输入坐标类型
+            <para>默认bd09ll</para>
+            <para>允许的值为： bd09ll：百度经纬度坐标;bd09mc：百度墨卡托坐标;gcj02：国测局加密坐标;wgs84：gps设备获取的坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.RetCoordType">
+            <summary>
+            输出坐标类型
+            <para>返回值的坐标类型，默认为百度经纬度坐标：bd09ll</para>
+            <para>可选值： bd09ll：百度经纬度坐标;gcj02：国测局加密坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Transit.Timestamp">
+            <summary>
+            时间戳，与SN配合使用
+            <para>SN存在时必填</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.TransitResult">
+            <summary>
+            公交规划返回参数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResult.Result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultResult.Taxi">
+            <summary>
+            出租车信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultResult.Routes">
+            <summary>
+            路线方案
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxi.Details">
+            <summary>
+            出租车的详细信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxi.Distance">
+            <summary>
+            出租车预计里程数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxi.Duration">
+            <summary>
+            出租车预计耗时
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxi.Remark">
+            <summary>
+            出租车备注信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxiDetail.Description">
+            <summary>
+            白天还是夜间
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxiDetail.KMPrice">
+            <summary>
+            每公里价格(元)
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxiDetail.StartPrice">
+            <summary>
+            起步价(元)
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultTaxiDetail.TotalPrice">
+            <summary>
+            总价（元）
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultRoute.Price">
+            <summary>
+            本条路线的总票价（元）
+            <para>境外地区此字段值为null</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultRoute.LinePrice">
+            <summary>
+            车票详细信息
+            <para>起终点为境内地区同城时此字段为一个数组，数组中的每一项都有ticket_type 和ticket_price 两个字段；</para>
+            <para>起终点为境内跨城时，该字段为一个空的数组。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultRoute.Steps">
+            <summary>
+            路线分段
+            <para>数组，数组中的每一项是一步（step）。每条路线都由多个step组成</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultLinePrice.Type">
+            <summary>
+            票类型
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultLinePrice.Price">
+            <summary>
+            价格
+            <para>单位：元</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultStep.Type">
+            <summary>
+            路段出行方式
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultStep.Vehicle">
+            <summary>
+            交通工具信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.Name">
+            <summary>
+            公交路线名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.DirectionText">
+            <summary>
+            路线方向说明
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.StartName">
+            <summary>
+            路线方向说明
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.EndName">
+            <summary>
+            公交线路终点名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.StartTime">
+            <summary>
+            公交线路首班车时间
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.EndTime">
+            <summary>
+            公交线路的末班车时间
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.StopNum">
+            <summary>
+            路段经过的站点数量
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.TotalPrice">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.Type">
+            <summary>
+            公交线路类型
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.TransitResultVehicle.ZonePrice">
+            <summary>
+            区间价
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.Walking">
+            <summary>
+            步行路线规划
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.Origin">
+            <summary>
+            起点经纬度
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.Destination">
+            <summary>
+            终点
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.OriginUid">
+            <summary>
+            起点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.DestinationUid">
+            <summary>
+            终点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.CoordType">
+            <summary>
+            输入坐标类型
+            <para>默认bd09ll</para>
+            <para>允许的值为： bd09ll：百度经纬度坐标;bd09mc：百度墨卡托坐标;gcj02：国测局加密坐标;wgs84：gps设备获取的坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.RetCoordType">
+            <summary>
+            输出坐标类型
+            <para>返回值的坐标类型，默认为百度经纬度坐标：bd09ll</para>
+            <para>可选值： bd09ll：百度经纬度坐标;gcj02：国测局加密坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.Walking.Timestamp">
+            <summary>
+            时间戳，与SN配合使用
+            <para>SN存在时必填</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.DirectionLite.V1.WalkingResult">
+            <summary>
+            步行规划返回参数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.DirectionLite.V1.WalkingResult.Result">
+            <summary>
+            返回的结果
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Direction.V2.Motorcycle">
+            <summary>
+            摩托车路线规划
+            <para>摩托车路线规划为开放平台高级服务，需申请开通权限后才能访问服务</para>
+            <para> https://lbsyun.baidu.com/apiconsole/quota#/home?jumpService=motorcycle </para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Origin">
+            <summary>
+            起点经纬度
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Destination">
+            <summary>
+            终点
+            <para>格式为：纬度,经度</para>
+            <para>小数点后不超过6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.OriginUid">
+            <summary>
+            起点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.DestinationUid">
+            <summary>
+            终点uid
+            <para>POI 的 uid</para>
+            <para>在已知起点POI 的 uid 情况下，请尽量填写uid，将提升路线规划的准确性</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.WayPoints">
+            <summary>
+            途径点坐标串
+            <para>支持18个以内的有序途径点。 多个途径点坐标按顺序以英文竖线符号分隔</para>
+            <para>示例: 40.465,116.314|40.232,116.352|40. 121,116.453</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Tactics">
+            <summary>
+            规划策略
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Alternatives">
+            <summary>
+            是否返回备选路线
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.PlateNumber">
+            <summary>
+            车牌号
+            <para>不填则不作规避</para>
+            <para>如 京A00022 用于规避车牌号限行路段。</para>
+            <para>  1. 若有规避限行区域的可选路线， 则返回规避后的路线，不会返回限行 路线</para>
+            <para>  2.若无规避限行的可选路线(如: 起终点在限行区域内，或所有符合偏 好的路线都无法规避限行区域)，则返回限行路线中最优路线，并在返回字段 restriction 中提示用户路段被限行</para>
+            <para></para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Displacement">
+            <summary>
+            摩托车排量
+            <para>单位cc</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.GpsDirection">
+            <summary>
+            起点的车头方向
+            <para>取值范 围:0-359</para>
+            <para>车头方向为与正北方向顺时针夹角，该参数用于辅助判断起点所在正逆向车道，提高算路准 确率。 当speed>1.5米/秒且gps_direction存在 时，采用该方向。</para>
+            <para>gps_direction并不代表需填 写从gps获取的方向，可以填入校正后的方 向。请填写尽量准确的方向，其准确性很大程 度决定了计算的精度。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Radius">
+            <summary>
+            起点的定位精度
+            <para>取值范围 [0,2000]</para>
+            <para>配合gps_direction字段使用</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Speed">
+            <summary>
+            起点车辆的行驶速度
+            <para>单位:米/秒</para>
+            <para>配合gps_direction字段使用，当 speed>1.5米/秒且gps_direction存在时，采用 gps_direction的方向</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.CoordType">
+            <summary>
+            输入坐标类型
+            <para>默认bd09ll</para>
+            <para>允许的值为： bd09ll：百度经纬度坐标;bd09mc：百度墨卡托坐标;gcj02：国测局加密坐标;wgs84：gps设备获取的坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.RetCoordType">
+            <summary>
+            输出坐标类型
+            <para>返回值的坐标类型，默认为百度经纬度坐标：bd09ll</para>
+            <para>可选值： bd09ll：百度经纬度坐标;gcj02：国测局加密坐标</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Timestamp">
+            <summary>
+            时间戳，与SN配合使用
+            <para>SN存在时必填</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.Motorcycle.Output">
+            <summary>
+            输出类型
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Direction.V2.MotorcycleResult">
+            <summary>
+            摩托车规划返回参数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResult.Result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultResult.Restriction">
+            <summary>
+            限行结果提示信息
+            <para>1: 若无限行路 线，则返回空 </para>
+            <para>2: 若无法规避限 行，则返回限行 提示信息</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultResult.Total">
+            <summary>
+            返回方案的总数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Origin">
+            <summary>
+            起点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Destination">
+            <summary>
+            重点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Tag">
+            <summary>
+            方案标签
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.RestrictionInfo">
+            <summary>
+            限行信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Distance">
+            <summary>
+            方案距离
+            <para>单 位:米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Duration">
+            <summary>
+            线路耗时
+            <para>单 位:秒</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.TaxiFee">
+            <summary>
+            出租车费用
+            <para>单 位:元</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Toll">
+            <summary>
+            此路线道路收费
+            <para>单 位:元</para>
+            <para>此高速费为预估价格，与实际高速收费并不完全一致</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.TollDistance">
+            <summary>
+            收费路段里程
+            <para>单 位:米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRoute.Steps">
+            <summary>
+            路线分段
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRestrictionInfo.Status">
+            <summary>
+            限行状态
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultRestrictionInfo.Description">
+            <summary>
+            限行提示语
+            <para>当限行status为1或 2时，会有相应的 限行描述信息。 若该路线有多条 提示信息，则以 英文竖线分隔符 分隔，如: "已为您避开北京 限行区域" "无法为您避开北 京限行区域，请 合理安排出行" "起点在北京限行 区域，请合理安 排出行" "终点在北京限行 区域，请合理安 排出行" "起点在北京限行 区域，请合理安 排出行|终点在北 京限行区域，请 合理安排出行"</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.LegIndex">
+            <summary>
+            途径点序号
+            <para>途径点序号为从0 开始的整数，用 于标识step所属的 途径点路段</para>
+            <para>如:若该step属于 起点至第一个途 径中的路段，则 其leg_index为0</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.Direction">
+            <summary>
+            进入道路的角度
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.Distance">
+            <summary>
+            step的距离信息
+            <para>单 位:米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.RoadName">
+            <summary>
+            分段的道路名称
+            <para>如“信息路“ 若道路未命名或 百度地图未采集 到该道路名称， 则返回"无名路"</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.RoadType">
+            <summary>
+            分段的道路类型
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.Toll">
+            <summary>
+            分段道路收费
+            <para>单 位:元</para>
+            <para>因一个收费路段 可能覆盖多个 step，部分情况下 费用无法按step准 确拆分，故分段 step收费可能存在 不准确情况</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.TollDistance">
+            <summary>
+            分段道路收费路程
+            <para>单 位:米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.TollGateName">
+            <summary>
+            收费站名称
+            <para>只有在进收费站 和出收费站时才 有</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.TollGateLocation">
+            <summary>
+            收费站坐标
+            <para>只有在进收费站和出收费站时才有</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.StartLocation">
+            <summary>
+            分段起点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.end_location">
+            <summary>
+            分段终点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.Paths">
+            <summary>
+            分段坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.ADCodes">
+            <summary>
+            分段途经的城市 编码
+            <para>若途经多个城 市，则adcode以英 文半角逗号相隔</para>
+            <para>如: 110000,120000</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultStep.traffic_condition">
+            <summary>
+            分段路况详情
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultTrafficCondition.Status">
+            <summary>
+            路况指数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultTrafficCondition.GeoCount">
+            <summary>
+            路况相 同的坐标点个数
+            <para>从当前坐标点开 始，path中路况相 同的坐标点个数</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Direction.V2.MotorcycleResultTrafficCondition.Distance">
+            <summary>
+            距离
+            <para>从当前坐 标点开始path 中 路况相同的距 离</para>
+            <para>单位:米</para>
+            <para>注:单条线路中 所有distance的和 会与route的 distance字段存在 差异，不是完全 一致</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Location.IP.IPRequest">
+            <summary>
+            普通IP定位请求
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPRequest.IP">
+            <summary>
+            用户上网的IP地址，请求中如果不出现或为空，会针对发来请求的IP进行定位。
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPRequest.Coor">
+            <summary>
+            设置返回位置信息中，经纬度的坐标类型
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Location.IP.IPResult">
+            <summary>
+            普通IP定位结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.IPResultContent.Address">
+            <summary>
+            简要地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.IPResultContent.AddressDetail">
+            <summary>
+            地址详情
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.IPResultContent.Point">
+            <summary>
+            坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.IPResultAddressDetail.City">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.IPResultAddressDetail.CityCode">
+            <summary>
+            百度城市代码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.IPResultAddressDetail.province">
+            <summary>
+            	省份
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.Address">
+            <summary>
+            详细地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Location.IP.IPResult.Content">
+            <summary>
+            地址内容
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.Detail">
+            <summary>
+            地点详情检索服务
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.UID">
+            <summary>
+            poi的uid
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.UIDs">
+            <summary>
+            uid的集合
+            <para>最多可以传入10个uid，多个uid之间用英文逗号分隔</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.RetCoordType">
+            <summary>
+            可选参数，添加后POI返回国测局经纬度坐标
+            <para>http://lbsyun.baidu.com/index.php?title=coordinate</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.ExtensionsAdcode">
+            <summary>
+            是否召回国标行政区划编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.Scope">
+            <summary>
+            检索结果详细程度
+            <para>取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.Output">
+            <summary>
+            返回数据格式，可选json、xml两种
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Detail.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.DetailResult">
+            <summary>
+            地点详情检索服务
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.DetailResult.Result">
+            <summary>
+            详情结果集
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchBase">
+            <summary>
+            地点检索基础请求
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.Query">
+            <summary>
+            检索关键字。
+            <para>必填</para>
+            <para>行政区划区域检索不支持多关键字检索。如果需要按POI分类进行检索，请将分类通过query参数进行设置，如query=美食</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.Tag">
+            <summary>
+            检索分类偏好
+            <para>http://lbsyun.baidu.com/index.php?title=lbscloud/poitags</para>
+            <para>与q组合进行检索，多个分类以","分隔（POI分类），如果需要严格按分类检索，请通过query参数设置</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.Filter">
+            <summary>
+            检索过滤条件
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.Scope">
+            <summary>
+            检索结果详细程度
+            <para>取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.Output">
+            <summary>
+            返回数据格式，可选json、xml两种
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.ExtensionsAdcode">
+            <summary>
+            是否召回国标行政区划编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.CoordType">
+            <summary>
+            可选参数，用于标注请求中「location」参数使用的坐标类型
+            <para>坐标类型：                    </para>
+            <para>1（WGS84ll即GPS经纬度）       </para>
+            <para>2（GCJ02ll即国测局经纬度坐标）</para>
+            <para>3（BD09ll即百度经纬度坐标）   </para>
+            <para>4（BD09mc即百度米制坐标）</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.RetCoordType">
+            <summary>
+            可选参数，添加后POI返回国测局经纬度坐标
+            <para>http://lbsyun.baidu.com/index.php?title=coordinate</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.PageSize">
+            <summary>
+            单次召回POI数量
+            <para>默认为10条记录，最大返回20条。多关键字检索时，返回的记录数为关键字个数*page_size</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchBase.PageNum">
+            <summary>
+            分页页码
+            <para>默认为0,0代表第一页，1代表第二页，以此类推。常与page_size搭配使用，仅当返回结果为poi时可以翻页。</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchByBounds">
+            <summary>
+            地址检索-矩形区域检索
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchByBounds.Bounds">
+            <summary>
+            检索矩形区域
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchByRadius">
+            <summary>
+            圆形检索
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchByRadius.Location">
+            <summary>
+            圆形区域检索中心点
+            <para>不支持多个点</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchByRadius.Radius">
+            <summary>
+            圆形区域检索半径(单位为米)
+            <para>（增加区域内数据召回权重，如需严格限制召回数据在区域内，请搭配使用radius_limit参数），当半径过大，超过中心点所在城市边界时，会变为城市范围检索，检索范围为中心点所在城市</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchByRadius.RadiusLimit">
+            <summary>
+            是否严格限定召回结果在设置检索半径范围内
+            <para>设置为true时会影响返回结果中total准确性及每页召回poi数量， 设置为false时可能会召回检索半径外的poi。</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchByRegion">
+            <summary>
+            行政区划区域检索
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchByRegion.Region">
+            <summary>
+            支持全国、省、城市及对应百度编码
+            <para>http://wiki.lbsyun.baidu.com/cms/citycode/BaiduMap_cityCode_1102.zip</para>
+            <para>指定的区域的返回结果加权，可能返回其他城市高权重结果。若要对返回结果区域严格限制，请使用city_limit参数</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchByRegion.CityLimit">
+            <summary>
+            取值为"true"，仅返回region中指定城市检索结果
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchResult">
+            <summary>
+            行政区划区域检索
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResult.Total">
+            <summary>
+            POI检索总数
+            <para>开发者请求中设置了page_num字段才会出现total字段。出于数据保护目的，单次请求total最多为150。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResult.ResultType">
+            <summary>
+            结果类型
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResult.Results">
+            <summary>
+            查询到的结果集
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchResultItem">
+            <summary>
+            地点检索单条结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Name">
+            <summary>
+            poi名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Location">
+            <summary>
+            poi经纬度坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Address">
+            <summary>
+            POI 地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Province">
+            <summary>
+            所属省份
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.City">
+            <summary>
+            所属城市
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Area">
+            <summary>
+            所属区县
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Adcode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.Telephone">
+            <summary>
+            poi电话信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.UID">
+            <summary>
+            poi的唯一标示，可用于详情检索
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.StreetID">
+            <summary>
+            街景图id
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.HasDetail">
+            <summary>
+            是否有详情页
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItem.DetailInfo">
+            <summary>
+            poi的扩展信息
+            <para>仅当scope=2时，显示该字段，不同的poi类型，显示的detail_info字段不同</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail">
+            <summary>
+            地点检索详情信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Distance">
+            <summary>
+            距离中心点的距离
+            <para>圆形区域检索时返回</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Type">
+            <summary>
+            所属分类
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.NaviLocation">
+            <summary>
+            POI对应的导航引导点坐标
+            <para>大型面状POI的导航引导点，一般为各类出入口，方便结合导航、路线规划等服务使用</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Address">
+            <summary>
+            POI 地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Alias">
+            <summary>
+            poi别名
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.DetailUrl">
+            <summary>
+            poi的详情页
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Children">
+            <summary>
+            POI 地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.ShopHours">
+            <summary>
+            营业时间
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.OverallRating">
+            <summary>
+            总体评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.TasteRating">
+            <summary>
+            口味评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.ServiceRating">
+            <summary>
+            服务评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.EnvironmentRating">
+            <summary>
+            环境评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.FacilityRating">
+            <summary>
+            星级（设备）评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.HygieneRating">
+            <summary>
+            卫生评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.TechnologyRating">
+            <summary>
+            技术评分
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.ImageNum">
+            <summary>
+            图片数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.GrouponNum">
+            <summary>
+            团购数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.DiscountNum">
+            <summary>
+            优惠数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.CommentNum">
+            <summary>
+            评论数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.FavoriteNum">
+            <summary>
+            收藏数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.CheckinNum">
+            <summary>
+            签到数
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.Brand">
+            <summary>
+            poi对应的品牌
+            <para>如加油站中的『中石油』、『中石化』</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetail.ContentTag">
+            <summary>
+            poi标签信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.UID">
+            <summary>
+            poi子点的唯一标示，可用于详情检索
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.Name">
+            <summary>
+            poi子点名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.ShowName">
+            <summary>
+            poi子点简要名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.Tag">
+            <summary>
+            poi子点类别
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.Location">
+            <summary>
+            poi子点坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.Address">
+            <summary>
+            poi子点地址
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SearchResultItemDetailChild.Price">
+            <summary>
+            poi商户的价格
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.Suggestion">
+            <summary>
+            地点输入提示服务
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Suggestion.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Suggestion.Output">
+            <summary>
+            返回数据格式，可选json、xml两种
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Suggestion.Query">
+            <summary>
+            输入建议关键字（支持拼音）
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Suggestion.Region">
+            <summary>
+            支持全国、省、城市及对应百度编码
+            <para>http://wiki.lbsyun.baidu.com/cms/citycode/BaiduMap_cityCode_1102.zip</para>
+            <para>指定的区域的返回结果加权，可能返回其他城市高权重结果。若要对返回结果区域严格限制，请使用city_limit参数</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Suggestion.CityLimit">
+            <summary>
+            取值为"true"，仅返回region中指定城市检索结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.Suggestion.CoordType">
+            <summary>
+            可选参数，用于标注请求中「location」参数使用的坐标类型
+            <para>坐标类型：                    </para>
+            <para>1（WGS84ll即GPS经纬度）       </para>
+            <para>2（GCJ02ll即国测局经纬度坐标）</para>
+            <para>3（BD09ll即百度经纬度坐标）   </para>
+            <para>4（BD09mc即百度米制坐标）</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SuggestionResult">
+            <summary>
+            地点输入提示服务
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResult.Result">
+            <summary>
+            结果
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SuggestionResultChild">
+            <summary>
+            地点输入提示服务 - poi子点
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultChild.UID">
+            <summary>
+            poi子点ID
+            <para>可用于poi详情检索。默认不召回，若有需求请联系我们(完成企业认证后，才能开通权限)</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultChild.Name">
+            <summary>
+            poi子点名称
+            <para>默认不召回，若有需求请联系我们(完成企业认证后，才能开通权限)</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultChild.ShowName">
+            <summary>
+            poi子点简称
+            <para>默认不召回，若有需求请联系我们(完成企业认证后，才能开通权限)</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem">
+            <summary>
+            普通IP定位 - 列表结果对象
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Name">
+            <summary>
+            poi名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Location">
+            <summary>
+            poi经纬度坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.UID">
+            <summary>
+            poi的唯一标示，ID
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.City">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.CityID">
+            <summary>
+            百度城市编码 详情见资源下载citycode编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.District">
+            <summary>
+            区县
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Adcode">
+            <summary>
+            行政区划代码
+            <para>http://lbsyun.baidu.com/index.php?title=open/dev-res</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Business">
+            <summary>
+            商圈
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Tag">
+            <summary>
+            poi分类
+            <para>默认不召回，若有需求请联系我们(完成企业认证后，才能开通权限)</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Address">
+            <summary>
+            poi地址
+            <para>默认不召回，若有需求请联系我们(完成企业认证后，才能开通权限)</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Place.V2.SuggestionResultItem.Children">
+            <summary>
+            poi子点
+            <para>默认不召回，若有需求请联系我们；地点输入提示中的子点为简要信息，无poi坐标，如需要坐标，可通过返回的子点uid，使用地点检索中的地点详情检索功能检索坐标信息。(完成企业认证后，才能开通权限)</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Ros.V1.MatrixPost">
+            <summary>
+            路网创建接口
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Track.V1.Rectify">
+            <summary>
+            轨迹纠偏
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.Rectify.PointList">
+            <summary>
+            轨迹点序列
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.Rectify.RectifyOption">
+            <summary>
+            纠偏设置
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.Rectify.SupplementMode">
+            <summary>
+            里程补偿设置
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyOption.NeedMapmatch">
+            <summary>
+            是否需要将轨迹点绑路并补充道路形状点
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyOption.TransportMode">
+            <summary>
+            交通方式
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyOption.DenoiseGrade">
+            <summary>
+            去噪力度
+            <para>取值范围[0,5]，数值越大去噪力度越大，代表越多的点会被当做噪点去除。若取值0，则代表不去噪</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyOption.VacuateGrade">
+            <summary>
+            抽稀力度
+            <para>取值范围[0,5]，数值越大抽稀度力度越大，代表轨迹会越稀疏。若取值0，则代表不抽稀</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.LocalTime">
+            <summary>
+            轨迹点的定位时间
+            <para>使用UNIX时间戳（秒级）</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.Latitude">
+            <summary>
+            纬度
+            <para>支持小数点后6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.Longitude">
+            <summary>
+            经度
+            <para>支持小数点后6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.Speed">
+            <summary>
+            轨迹点的速度
+            <para>单位：公里/小时</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.Direction">
+            <summary>
+            轨迹点的方向
+            <para>单位：范围为[0,359]，0度为正北方向，顺时针方向递增</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.Height">
+            <summary>
+            轨迹点的高度
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointBase.Radius">
+            <summary>
+            定位时返回的定位精度
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPoint.CoordTypeInput">
+            <summary>
+            轨迹点的坐标系
+            <para>支持以下值：bd09ll（百度经纬度坐标）、gcj02（国测局加密坐标）、wgs84（GPS所采用的坐标系）</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyPointResult.CoordType">
+            <summary>
+            轨迹点的坐标系
+            <para>支持以下值：bd09ll（百度经纬度坐标）、gcj02（国测局加密坐标）、wgs84（GPS所采用的坐标系）</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Track.V1.RectifyResult">
+            <summary>
+            轨迹纠偏
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyResult.Total">
+            <summary>
+            忽略掉page_index，page_size后的轨迹点数量
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyResult.Distance">
+            <summary>
+            此段轨迹的里程数
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyResult.TollDistance">
+            <summary>
+            此段轨迹的收费里程数
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyResult.LowSpeedDistance">
+            <summary>
+            低速里程数
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.RectifyResult.Points">
+            <summary>
+            历史轨迹点列表
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Track.V1.TrackMatch">
+            <summary>
+            轨迹重合率分析
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatch.StandardTrack">
+            <summary>
+            基准轨迹
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatch.Track">
+            <summary>
+            待匹配轨迹
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatch.StandardOption">
+            <summary>
+            基准轨迹的纠偏参数设置
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatch.Option">
+            <summary>
+            待匹配轨迹的纠偏参数设置
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint.Latitude">
+            <summary>
+            纬度
+            <para>支持小数点后6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint.Longitude">
+            <summary>
+            经度
+            <para>支持小数点后6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint.LocalTime">
+            <summary>
+            时间
+            <para>不需要纠偏去噪时选填，需要纠偏去噪时必填。轨迹点的定位时间，使用UNIX时间戳（秒级）</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint.Speed">
+            <summary>
+            轨迹点的速度(选填)
+            <para>轨迹点的速度</para>
+            <para>单位：公里/小时</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint.Direction">
+            <summary>
+            轨迹点的方向(选填)
+            <para>轨迹点的方向</para>
+            <para>单位：范围为[0,359]，0度为正北方向，顺时针方向递增</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchPoint.Height">
+            <summary>
+            轨迹点的高度(选填)
+            <para>轨迹点的高度</para>
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.Track.V1.TrackMatchResult">
+            <summary>
+            轨迹重合率分析
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResult.Data">
+            <summary>
+            分析结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.Similarity">
+            <summary>
+            两条轨迹的匹配率
+            <para>轨迹的相似度，取值范围[0,100]，值越大代表相似度越高</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.MatchedDistance">
+            <summary>
+            匹配的轨迹里程
+            <para>track和standard_track轨迹重合的里程</para>
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.UnmatchedDistance">
+            <summary>
+            偏离基准轨迹的里程
+            <para>unmatched_distance=processed_track_distance-matched_distance</para>
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.ProcessedStandardTrack">
+            <summary>
+            纠偏后的基准轨迹
+            <para>仅在填写了standard_option请求参数时返回该字段</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.ProcessedTrack">
+            <summary>
+            纠偏后的待匹配轨迹
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.StandardTrackDistance">
+            <summary>
+            原始基准轨迹的里程
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.TrackDistance">
+            <summary>
+            原始待匹配轨迹的里程
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.ProcessedStandardTrackDistance">
+            <summary>
+            纠偏后的基准轨迹里程
+            <para>若请求参数未填写standard_option，则采用原始轨迹里程</para>
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultData.ProcessedTrackDistance">
+            <summary>
+            纠偏后的待匹配轨迹里程
+            <para>若请求参数未填写option，则采用原始轨迹里程</para>
+            <para>单位：米</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultProcessedStandardTrack.Location">
+            <summary>
+            轨迹点信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultProcessedStandardTrack.LocationTime">
+            <summary>
+            定位时间
+            <para>轨迹点的定位时间，使用UNIX时间戳</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.Track.V1.TrackMatchResultProcessedTrack.Unmatched">
+            <summary>
+            是否匹配
+            <para>该轨迹点是否与processed_standard_track（若未填standard_option，则是standard_track）匹配。</para>
+            <para>取值规则：</para>
+            <para>匹配：则不返回该字段</para>
+            <para>不匹配：值为1</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.V3.Geocoding">
+            <summary>
+            地理编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.Geocoding.Address">
+            <summary>
+            待解析的地址
+            <para>最多支持84个字节</para>
+            <para>可以输入两种样式的值，分别是： 1、标准的结构化地址信息，如北京市海淀区上地十街十号 【推荐，地址结构越完整，解析精度越高】2、支持“*路与* 路交叉口”描述方式，如北一环路和阜阳路的交叉路口。第二种方式并不总是有返回结果，只有当地址库中存在该地址描述时才有返回。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.Geocoding.City">
+            <summary>
+            地址所在的城市名
+            <para>用于指定上述地址所在的城市，当多个城市都有上述地址时，该参数起到过滤作用，但不限制坐标召回城市。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.Geocoding.RetCoordtype">
+            <summary>
+            可选参数，添加后返回国测局经纬度坐标或百度米制坐标
+            <para>http://lbsyun.baidu.com/index.php?title=coordinate</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.Geocoding.Output">
+            <summary>
+            输出格式为json或者xml
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.V3.GeocodingResult">
+            <summary>
+            地理编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.GeocodingResult.Result">
+            <summary>
+            地理编码结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.GeocodingResultResult.Location">
+            <summary>
+            经纬度坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.GeocodingResultResult.Precise">
+            <summary>
+            位置的附加信息，是否精确查找
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.GeocodingResultResult.Confidence">
+            <summary>
+            描述打点绝对精度（即坐标点的误差范围）
+            <para>confidence=100，解析误差绝对精度小于20m；</para>
+            <para>confidence≥90，解析误差绝对精度小于50m；</para>
+            <para>confidence≥80，解析误差绝对精度小于100m；</para>
+            <para>confidence≥75，解析误差绝对精度小于200m；</para>
+            <para>confidence≥70，解析误差绝对精度小于300m；</para>
+            <para>confidence≥60，解析误差绝对精度小于500m；</para>
+            <para>confidence≥50，解析误差绝对精度小于1000m；</para>
+            <para>confidence≥40，解析误差绝对精度小于2000m；</para>
+            <para>confidence≥30，解析误差绝对精度小于5000m；</para>
+            <para>confidence≥25，解析误差绝对精度小于8000m；</para>
+            <para>confidence≥20，解析误差绝对精度小于10000m；</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.GeocodingResultResult.Comprehension">
+            <summary>
+            描述地址理解程度
+            <para>分值范围0-100，分值越大，服务对地址理解程度越高（建议以该字段作为解析结果判断标准）</para>
+            <para>当comprehension值为以下值时，对应的准确率如下：</para>
+            <para>comprehension=100，解析误差100m内概率为91%，误差500m内概率为96%；</para>
+            <para>comprehension≥90，解析误差100m内概率为89%，误差500m内概率为96%；</para>
+            <para>comprehension≥80，解析误差100m内概率为88%，误差500m内概率为95%；</para>
+            <para>comprehension≥70，解析误差100m内概率为84%，误差500m内概率为93%；</para>
+            <para>comprehension≥60，解析误差100m内概率为81%，误差500m内概率为91%；</para>
+            <para>comprehension≥50，解析误差100m内概率为79%，误差500m内概率为90%；</para>
+            <para>解析误差：地理编码服务解析地址得到的坐标位置，与地址对应的真实位置间的距离。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.GeocodingResultResult.Level">
+            <summary>
+            描述打点绝对精度（即坐标点的误差范围）
+            <para>包含：UNKNOWN、国家、省、城市、区县、乡镇、村庄、道路、地产小区、商务大厦、政府机构、交叉路口、商圈、生活服务、休闲娱乐、餐饮、宾馆、购物、金融、教育、医疗 、工业园区 、旅游景点 、汽车服务、火车站、长途汽车站、桥 、停车场/停车区、港口/码头、收费区/收费站、飞机场 、机场 、收费处/收费站 、加油站、绿地、门址</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.V3.ReverseGeocoding">
+            <summary>
+            逆地理编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.Location">
+            <summary>
+            根据经纬度坐标获取地址。
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.Coordtype">
+            <summary>
+            坐标的类型
+            <para>目前支持的坐标类型包括：bd09ll（百度经纬度坐标）、bd09mc（百度米制坐标）、gcj02ll（国测局经纬度坐标，仅限中国）、wgs84ll（ GPS经纬度）</para>
+            <para>http://lbsyun.baidu.com/index.php?title=coordinate</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.RetCoordtype">
+            <summary>
+            可选参数，添加后返回国测局经纬度坐标或百度米制坐标
+            <para>http://lbsyun.baidu.com/index.php?title=coordinate</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.Radius">
+            <summary>
+            poi召回半径
+            <para>允许设置区间为0-1000米，超过1000米按1000米召回</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.Output">
+            <summary>
+            输出格式为json或者xml
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.PoiTypes">
+            <summary>
+            可以选择poi类型召回不同类型的poi
+            <para>例如poi_types=酒店，如想召回多个POI类型数据，可以‘|’分割例如poi_types=酒店|房地产不添加该参数则默认召回全部POI分类数据。</para>
+            <para>http://lbsyun.baidu.com/index.php?title=lbscloud/poitags</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.ExtensionsPoi">
+            <summary>
+            是否返回pois数据
+            <para>（默认显示周边1000米内的poi），并返回sematic_description语义化数据。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.ExtensionsRoad">
+            <summary>
+            是否召回坐标周围最近的3条道路数据
+            <para>区别于行政区划中的street参数（street参数为行政区划中的街道，和普通道路不对应）</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.ExtensionsTown">
+            <summary>
+            行政区划返回乡镇级数据（town）
+            <para>仅国内召回乡镇数据。默认不访问。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.Language">
+            <summary>
+            指定召回的行政区划语言类型
+            <para>召回行政区划语言list（全量支持的语言见示例）。</para>
+            <para>el gu en vi ca it iw sv eu ar cs gl id es en-GB ru sr nl pt tr tl lv en-AU lt th ro fil ta fr bg hr bn de hu fa hi pt-BR fi da ja te pt-PT ml ko kn sk zh-CN pl uk sl mr local</para>
+            <para>当language=local时，根据请求中坐标所对应国家的母语类型，自动选择对应语言类型的行政区划召回。</para>
+            <para>目前支持多语言的行政区划区划包含country、province、city、district</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocoding.LanguageAuto">
+            <summary>
+            当用户指定language参数时，是否自动填充行政区划
+            <para>当服务按某种语言类别召回时，若某一行政区划层级的语言数据未覆盖，则按照“英文→中文→本地语言”类别行政区划数据对该层级行政区划进行填充，保证行政区划数据召回完整性。</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.APIs.V3.ReverseGeocodingResult">
+            <summary>
+            逆地理编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResult.Result">
+            <summary>
+            逆地理编码结果
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.Location">
+            <summary>
+            经纬度坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.FormattedAddress">
+            <summary>
+            结构化地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.Business">
+            <summary>
+            坐标所在商圈信息
+            <para>如 "人民大学,中关村,苏州街"。最多返回3个。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.addressComponent">
+            <summary>
+            注意，国外行政区划，字段仅代表层级
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.Pois">
+            <summary>
+            周边poi数组
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.Roads">
+            <summary>
+            周边路信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.PoiRegions">
+            <summary>
+            POI 区域信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.SematicDescription">
+            <summary>
+            当前位置结合POI的语义化结果描述
+            <para>需设置extensions_poi=1才能返回</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultResult.CityCode">
+            <summary>
+            百度定义的城市id
+            <para>正常更新与维护，但建议使用adcode</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.Country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.CountryCode">
+            <summary>
+            国家编码
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.CountryCodeIso">
+            <summary>
+            国家英文缩写（三位）
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.CountryCodeIso2">
+            <summary>
+            国家英文缩写（两位）
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.Province">
+            <summary>
+            省名
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.City">
+            <summary>
+            城市名
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.CityLevel">
+            <summary>
+            城市所在级别
+            <para>仅国外有参考意义。国外行政区划与中国有差异，城市对应的层级不一定为『city』</para>
+            <para>country、province、city、district、town分别对应0-4级，若city_level=3，则district层级为该国家的city层级</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.District">
+            <summary>
+            区县名
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.Town">
+            <summary>
+            乡镇名
+            <para>需设置extensions_town=true时才会返回</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.TownCode">
+            <summary>
+            乡镇id
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.Street">
+            <summary>
+            街道名（行政区划中的街道层级）
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.StreetNumber">
+            <summary>
+            街道门牌号
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.ADCode">
+            <summary>
+            行政区划代码
+            <para>下载地址：https://lbsyun.baidu.com/index.php?title=open/dev-res </para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.Direction">
+            <summary>
+            相对当前坐标点的方向
+            <para>当有门牌号的时候返回数据</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultAddressComponent.Distance">
+            <summary>
+            相对当前坐标点的距离
+            <para>当有门牌号的时候返回数据</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Address">
+            <summary>
+            地址信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.CP">
+            <summary>
+            数据来源（已废弃）
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Direction">
+            <summary>
+            和当前坐标点的方向
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Distance">
+            <summary>
+            离坐标点距离
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Name">
+            <summary>
+            poi名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Tag">
+            <summary>
+            poi类型
+            <para>如’美食;中餐厅’。tag与poiType字段均为poi类型，建议使用tag字段，信息更详细。</para>
+            <para>poi详细类别: http://lbsyun.baidu.com/index.php?title=lbscloud/poitags </para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Point">
+            <summary>
+            poi坐标{x,y}
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.Telephone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.UID">
+            <summary>
+            poi唯一标识
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.ZIP">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.ParentPoi">
+            <summary>
+            poi对应的主点poi
+            <para>海底捞的主点为上地华联，该字段则为上地华联的poi信息。如无，该字段为空</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoi.HasParentInfo">
+            <summary>
+            是否有父级信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoiRegion.DirectionDescription">
+            <summary>
+            请求中的坐标与所归属区域面的相对位置关系
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoiRegion.Name">
+            <summary>
+            归属区域面名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultPoiRegion.Tag">
+            <summary>
+            归属区域面类型
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultRoad.Name">
+            <summary>
+            周边道路名称
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.APIs.V3.ReverseGeocodingResultRoad.Distance">
+            <summary>
+            传入的坐标点距离道路的大概距离
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.BoolToNumConverterAttribute">
+            <summary>
+            布尔转0或1
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.EnumNameAttribute">
+            <summary>
+            获取枚举名为字符串结果
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.EnumValueAttribute">
+            <summary>
+            获取枚举值为字符串值
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.FilterConverterAttribute">
+            <summary>
+            检索过滤条件转换格式
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.LocationListConverterAttribute">
+            <summary>
+            坐标列表属性转字符串格式转换器
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.PriceSectionConverterAttribute">
+            <summary>
+            价格区间格式转换
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.StringConverterAttribute">
+            <summary>
+            属性转字符串工具
+            </summary>
+        </member>
+        <member name="M:BaiduMapAPI.Models.Attributes.StringConverterAttribute.GetString(System.Object)">
+            <summary>
+            获取字符串结果
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.ListConverterAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Attributes.ToTimestampAttribute">
+            <summary>
+            将日期类型转为 Unix 时间戳
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Bound">
+            <summary>
+            矩形坐标信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Bound.TopLeft">
+            <summary>
+            左上角坐标
+            </summary>        
+        </member>
+        <member name="P:BaiduMapAPI.Models.Bound.BottonRight">
+            <summary>
+            右下角坐标
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.CityLevel">
+            <summary>
+            城市所在级别
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CityLevel.country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CityLevel.province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CityLevel.city">
+            <summary>
+            市
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CityLevel.district">
+            <summary>
+            区/县
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CityLevel.town">
+            <summary>
+            乡/镇
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.CoordType">
+            <summary>
+            坐标类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CoordType.wgs84ll">
+            <summary>
+            GPS经纬度
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CoordType.gcj02ll">
+            <summary>
+            国测局经纬度坐标
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CoordType.bd09ll">
+            <summary>
+            百度经纬度坐标
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CoordType.bd09mc">
+            <summary>
+            百度米制坐标
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CoordType.wgs84">
+            <summary>
+            GPS经纬度
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.CoordType.gcj02">
+            <summary>
+            国测局经纬度坐标
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.DenoiseGrade">
+            <summary>
+            去噪力度
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DenoiseGrade.leve0">
+            <summary>
+            不去噪
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DenoiseGrade.leve1">
+            <summary>
+            系统默认去噪
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DenoiseGrade.leve2">
+            <summary>
+            系统默认去噪
+            <para>同时去除定位精度低于500的轨迹点，相当于保留GPS定位点、大部分Wi-Fi定位点和精度较高的基站定位点</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DenoiseGrade.leve3">
+            <summary>
+            系统默认去噪
+            <para>同时去除定位精度低于100的轨迹点，相当于保留GPS定位点和大部分Wi-Fi定位点</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DenoiseGrade.leve4">
+            <summary>
+            系统默认去噪
+            <para>同时去除定位精度低于50的轨迹点，相当于保留GPS定位点和精度较高的Wi-Fi定位点</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DenoiseGrade.leve5">
+            <summary>
+            系统默认去噪
+            <para>同时去除定位精度低于20的轨迹点，相当于仅保留GPS定位点</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.DirectionType">
+            <summary>
+            角度类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction1">
+            <summary>
+            345°- 15°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction2">
+            <summary>
+            15°- 45°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction3">
+            <summary>
+            45°- 75°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction4">
+            <summary>
+            75°- 105°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction5">
+            <summary>
+            105°- 135°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction6">
+            <summary>
+            135°- 165°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction7">
+            <summary>
+            165°- 195°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction8">
+            <summary>
+            195°- 225°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction9">
+            <summary>
+            225°- 255°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction10">
+            <summary>
+            255°- 285°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction11">
+            <summary>
+            285°- 315°
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.DirectionType.Direction12">
+            <summary>
+            315°- 345°
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.HasOrNot">
+            <summary>
+            有或没有
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.HasOrNot.Have">
+            <summary>
+            有
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.HasOrNot.NotHave">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.HttpMethod">
+            <summary>
+            请求类型
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.IndustryType">
+            <summary>
+            行业类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.IndustryType.hotel">
+            <summary>
+            宾馆
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.IndustryType.cater">
+            <summary>
+            餐饮
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.IndustryType.life">
+            <summary>
+            生活娱乐
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.LinePriceType">
+            <summary>
+            车票类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.LinePriceType.Bus">
+            <summary>
+            公交票价
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.LinePriceType.Metro">
+            <summary>
+            地铁票价
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.RestrictionStatus">
+            <summary>
+            限行状态
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RestrictionStatus.Infinite">
+            <summary>
+            无限行
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RestrictionStatus.Circumvented">
+            <summary>
+            已规避限行， 路线合法
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RestrictionStatus.CanNotAvoid">
+            <summary>
+            无法规避限 行，路线非法
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.RidingType">
+            <summary>
+            骑行模式
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RidingType.Bike">
+            <summary>
+            普通自行车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RidingType.EBike">
+            <summary>
+            电动自行车
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.RoadType">
+            <summary>
+            道路类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.HightWay">
+            <summary>
+            高速路
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.CityHightWay">
+            <summary>
+            城市高速路
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.NationalRoad">
+            <summary>
+            国道
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.ProvincialRoad">
+            <summary>
+            省道
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.CountyRoad">
+            <summary>
+            县道
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.TownshipVillageRoad">
+            <summary>
+            乡镇村道
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.OtherRoad">
+            <summary>
+            其他道路
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.Level9Road">
+            <summary>
+            九级路
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.FerryLinks">
+            <summary>
+            航线(轮渡)
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.RoadType.PedestrianRoad">
+            <summary>
+            行人道路
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.Scope">
+            <summary>
+            检索结果详细程度
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.Scope.BaseInfo">
+            <summary>
+            基本信息
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.Scope.DetailInfo">
+            <summary>
+            详细信息
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.SearchResultType">
+            <summary>
+            结果类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SearchResultType.city_type">
+            <summary>
+            城市列表
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SearchResultType.poi_type">
+            <summary>
+            普通poi
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SearchResultType.region_type">
+            <summary>
+            行政区划数据
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SearchResultType.address_type">
+            <summary>
+            门址数据
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.SortName">
+            <summary>
+            排序字段
+            <para>根据industry_type字段的值而定</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.Default">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.overall_rating">
+            <summary>
+            好评
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.distance">
+            <summary>
+            距离排序，只有圆形区域检索有效
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.level">
+            <summary>
+            星级
+            <para>industry_type为hotel时</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.health_score">
+            <summary>
+            卫生
+            <para>industry_type为hotel时</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.taste_rating">
+            <summary>
+            口味
+            <para>industry_type为cater时</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.service_rating">
+            <summary>
+            服务
+            <para>industry_type为cater时</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortName.comment_num">
+            <summary>
+            服务
+            <para>industry_type为life时</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.SortRule">
+            <summary>
+            排序规则
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortRule.Asc">
+            <summary>
+            从低到高
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SortRule.Desc">
+            <summary>
+            从高到低
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.SupplementMode">
+            <summary>
+            里程补偿设置
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SupplementMode.no_supplement">
+            <summary>
+            不补充，中断两点间距离不记入里程
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SupplementMode.straight">
+            <summary>
+            使用直线距离补充
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SupplementMode.driving">
+            <summary>
+            使用最短驾车路线距离补充
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SupplementMode.riding">
+            <summary>
+            使用最短骑行路线距离补充
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.SupplementMode.walking">
+            <summary>
+            使用最短步行路线距离补充
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.Tactics">
+            <summary>
+            路线偏好
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.Tactics.Normal">
+            <summary>
+            常规路线
+            <para>即多数用户常走的一条经验路线，满足大多数场景需求，是较推荐的一个策略</para>
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.Tactics.NOT_HightWay">
+            <summary>
+            不走高速
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.Tactics.NOT_TrafficJam">
+            <summary>
+            躲避拥堵
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.Tactics.ShortWay">
+            <summary>
+            距离较短
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.Normal">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_HightWay">
+            <summary>
+            不走高速
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.HightWayFirst">
+            <summary>
+            高速优先
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_TrafficJam">
+            <summary>
+            躲避拥堵
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.LowFee">
+            <summary>
+            少收费
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_TrafficJam_And_HightWayFirst" -->
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_TrafficJam_AND_NOT_HightWay">
+            <summary>
+            躲避拥堵且不走高速
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_TrafficJam_AND_LowFee" -->
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_TrafficJam_AND_NOT_HightWay_AND_LowFee">
+            <summary>
+            少收躲避拥堵且不走高速且少收费费
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TacticsDetail.NOT_HightWay_AND_LowFee">
+            <summary>
+            不走高速且少收费
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.TrafficCondition">
+            <summary>
+            交通路况评价
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TrafficCondition.None">
+            <summary>
+            无路况
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TrafficCondition.Unblocked">
+            <summary>
+            畅通
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TrafficCondition.Slowly">
+            <summary>
+            缓行
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TrafficCondition.TrafficJam">
+            <summary>
+            拥堵
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TrafficCondition.TrafficCongestion">
+            <summary>
+            严重拥堵
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.TransitResultStepType">
+            <summary>
+            公交出行方式
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransitResultStepType.Train">
+            <summary>
+            火车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransitResultStepType.Airplane">
+            <summary>
+            飞机
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransitResultStepType.Bus">
+            <summary>
+            公交
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransitResultStepType.Driver">
+            <summary>
+            驾车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransitResultStepType.Walk">
+            <summary>
+            步行
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransitResultStepType.Coach">
+            <summary>
+            大巴
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.TransportMode">
+            <summary>
+            交通方式
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransportMode.auto">
+            <summary>
+            自动
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransportMode.driving">
+            <summary>
+            驾驶
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransportMode.riding">
+            <summary>
+            骑行
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TransportMode.walking">
+            <summary>
+            步行
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.TurnType">
+            <summary>
+            转向类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.NONE">
+            <summary>
+            无效
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.GoStraightAhead">
+            <summary>
+            直行
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.RightFrontTurn">
+            <summary>
+            右前方转弯
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.TurnRight">
+            <summary>
+            右转
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.RightRearTurn">
+            <summary>
+            右后方转弯
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.TurnAround">
+            <summary>
+            掉头
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.LeftRearTurn">
+            <summary>
+            左后方转弯
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.TurnLeft">
+            <summary>
+            左转
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.LeftFrontTurn">
+            <summary>
+            左前方转弯
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.Left">
+            <summary>
+            左侧
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.Right">
+            <summary>
+            右侧
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.DivergentLeft">
+            <summary>
+            分歧-左
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.DivergentCenter">
+            <summary>
+            分歧中央
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.DivergentRight">
+            <summary>
+            分歧右
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.Roundabout">
+            <summary>
+            环岛
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.EntranceFerry">
+            <summary>
+            进渡口
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.TurnType.ExitFerry">
+            <summary>
+            出渡口
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.VacuateGrade">
+            <summary>
+            抽稀力度
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VacuateGrade.leve0">
+            <summary>
+            不抽稀
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VacuateGrade.leve1">
+            <summary>
+            抽稀力度为1
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VacuateGrade.leve2">
+            <summary>
+            抽稀力度为2
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VacuateGrade.leve3">
+            <summary>
+            抽稀力度为3
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VacuateGrade.leve4">
+            <summary>
+            抽稀力度为4
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VacuateGrade.leve5">
+            <summary>
+            抽稀力度为5
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Enums.VehicleType">
+            <summary>
+            公交线路类型
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.OrdinaryDailyBus">
+            <summary>
+            普通日行公交车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.Metro">
+            <summary>
+            地铁、轻轨
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.AirportBusEntry">
+            <summary>
+            机场巴士（前往机场）
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.Tram">
+            <summary>
+            有轨电车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.AirportBusExit">
+            <summary>
+            机场巴士（从机场返回）
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.TourBus">
+            <summary>
+            旅游线路车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.NightBus">
+            <summary>
+            夜班车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.AirportBusBetweenAirports">
+            <summary>
+            机场巴士（机场之间）
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.Ferry">
+            <summary>
+            轮渡
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.Other">
+            <summary>
+            其他
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.FastCar">
+            <summary>
+            快车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.SlowCar">
+            <summary>
+            慢车
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.AirportExpressRailEntry">
+            <summary>
+            机场快轨（前往机场）
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.AirportExpressRailExit">
+            <summary>
+            机场快轨（从机场返回）
+            </summary>
+        </member>
+        <member name="F:BaiduMapAPI.Models.Enums.VehicleType.AirportRailTransitLoop">
+            <summary>
+            机场轨道交通环路
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Filter">
+            <summary>
+            检索过滤条件
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Filter.IndustryType">
+            <summary>
+            行业类型
+            <para>注意：设置该字段可提高检索速度和过滤精度</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Filter.SortName">
+            <summary>
+            排序字段
+            <para>根据industry_type字段的值而定。</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Filter.SortRule">
+            <summary>
+            排序规则
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Filter.PriceSection">
+            <summary>
+            价格区间
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Filter.Groupon">
+            <summary>
+            是否有团购
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Filter.Discount">
+            <summary>
+            是否有打折
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Location">
+            <summary>
+            百度地图坐标对象
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Location.Lng">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Location.Lat">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.LocationDetail.Longitude">
+            <summary>
+            经度
+            <para>经度，支持小数点后6位</para>
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.LocationDetail.Latitude">
+            <summary>
+            纬度
+            <para>纬度，支持小数点后6位</para>
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Point">
+            <summary>
+            百度poi坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Point.X">
+            <summary>
+            X 坐标
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Point.Y">
+            <summary>
+            Y 坐标
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.PriceSection">
+            <summary>
+            价格区间
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.PriceSection.Max">
+            <summary>
+            最大值
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.PriceSection.Min">
+            <summary>
+            最小值
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.GetRequest`1">
+            <summary>
+            以 GET 形式发起的请求
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Request.JsonRequestWithoutSN`1">
+            <summary>
+            以 JSON 格式发起 POST 请求
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Request`1">
+            <summary>
+            基础请求信息
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Request`1.URL">
+            <summary>
+            请求地址
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Models.RequestWithoutSN`1">
+            <summary>
+            基础请求信息
+            <para>不需要提交 SN 参数</para>
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:BaiduMapAPI.Models.RequestWithoutSN`1.GetResult(System.String)">
+            <summary>
+            获取结果
+            </summary>
+            <param name="AK"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaiduMapAPI.Models.RequestWithoutSN`1.GetResultAsync(System.String)">
+            <summary>
+            以异步方式获取结果
+            </summary>
+            <param name="AK"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BaiduMapAPI.Models.RequestWithSN`1">
+            <summary>
+            基础请求信息
+            <para>需要提交 SN 参数</para>
+            </summary>
+        </member>
+        <member name="M:BaiduMapAPI.Models.RequestWithSN`1.GetResult(System.String,System.String)">
+            <summary>
+            获取结果
+            </summary>
+            <param name="AK"></param>
+            <param name="SK"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaiduMapAPI.Models.RequestWithSN`1.GetResultAsync(System.String,System.String)">
+            <summary>
+            以异步方式获取结果
+            </summary>
+            <param name="AK"></param>
+            <param name="SK"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BaiduMapAPI.Models.Response">
+            <summary>
+            响应信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Response.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Response.Message">
+            <summary>
+            状态码对应的信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Response.ErrMsg">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="P:BaiduMapAPI.Models.Response.OriginData">
+            <summary>
+            原始数据
+            </summary>
+        </member>
+        <member name="T:BaiduMapAPI.Utilities.BaiduHelper">
+            <summary>
+            百度地图辅助工具
+            </summary>
+        </member>
+        <member name="M:BaiduMapAPI.Utilities.BaiduHelper.CaculateAKSN(System.String,System.String,System.String,System.Collections.Specialized.NameValueCollection,System.Boolean)">
+            <summary>
+            获取签名字符串
+            </summary>
+            <param name="ak"></param>
+            <param name="sk"></param>
+            <param name="url"></param>
+            <param name="querystring_arrays"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaiduMapAPI.Utilities.BaiduHelper.GetSNUrl(System.String,System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            获取签名URL
+            </summary>
+            <param name="url"></param>
+            <param name="ak"></param>
+            <param name="sk"></param>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaiduMapAPI.Utilities.BaiduHelper.GetPropertyStringValue(System.Object)">
+            <summary>
+            获取
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BaiduMapAPI.Utilities.HttpHelper">
+            <summary>
+            HTTP 请求辅助类
+            </summary>
+        </member>
+        <member name="M:BaiduMapAPI.Utilities.HttpHelper.DoHttp(System.String,System.Action{System.Net.Http.HttpResponseMessage})">
+            <summary>
+            处理 HTTP 请求
+            </summary>
+            <param name="url"></param>
+            <param name="responseHandler"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Text.JsonHelper">
+            <summary>
+            JSON 辅助类
+            </summary>
+        </member>
+        <member name="M:System.Text.JsonHelper.FromJson``1(System.String)">
+            <summary>
+            将 JSON 字符串转为指定实体
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Text.JsonHelper.ToJson(System.Object)">
+            <summary>
+            将对象转为 Json 字符串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
