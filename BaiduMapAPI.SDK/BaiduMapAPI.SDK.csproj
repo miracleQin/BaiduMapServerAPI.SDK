@@ -10,7 +10,12 @@
     <Description>百度地图服务端API对接工具</Description>
     <PackageProjectUrl></PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/miracleQin/BaiduMapServerAPI.SDK</RepositoryUrl>
+    <RepositoryUrl>https://github.com/miracleQin/BaiduMapServerAPI.SDK.git</RepositoryUrl>
+    <PackageTags>BiaduMap Server API</PackageTags>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Copyright>LeoncinoQin</Copyright>
+    <RepositoryType>git</RepositoryType>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,6 +27,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+	  <None Include="..\LICENSE.txt">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
   </ItemGroup>
 
   <ItemGroup>
