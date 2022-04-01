@@ -203,5 +203,33 @@ namespace BaiduMapAPI.Utilities
         {
             return $"0x{color.R:X2}{color.G:X2}{color.B:X2}";
         }
+
+        /// <summary>
+        /// 获取枚举自定义描述特性
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enumField"></param>
+        /// <returns></returns>
+        internal static CustomDescriptionAttribute GetCustomDescription<TEnum>(this TEnum? enumField)
+            where TEnum : struct
+        {
+            return enumField == null ? null : enumField.Value.GetCustomDescription();
+        }
+
+        /// <summary>
+        /// 获取枚举自定义描述特性
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enumField"></param>
+        /// <returns></returns>
+        internal static CustomDescriptionAttribute GetCustomDescription<TEnum>(this TEnum enumField)
+            where TEnum : struct
+        {
+            CustomDescriptionAttribute result = null;
+            var enumType = typeof(TEnum);
+            var fieldType = enumType.GetField(enumField.ToString());
+            result = fieldType.GetCustomAttribute<CustomDescriptionAttribute>();
+            return result;
+        }
     }
 }

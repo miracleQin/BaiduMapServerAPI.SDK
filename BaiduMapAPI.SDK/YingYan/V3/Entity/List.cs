@@ -9,7 +9,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
     /// <summary>
     /// 查询entity
     /// </summary>
-    public class List : Models.FormDataPostRequest<ListResult>
+    public class List : Models.GetRequest<ListResult>
     {
         /// <summary>
         /// 接口地址
