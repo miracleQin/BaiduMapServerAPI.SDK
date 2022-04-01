@@ -503,6 +503,16 @@ public static class Test
         Console.ReadLine();
     }
 
+    [Display(ShortName = "ConvertYingYanEntityList",Name ="测试转换鹰眼实体列表对象")]
+    public static void TestConvertYingYanEntityList() 
+    {
+        string json = "{\"status\": 0,\"message\": \"成功\",\"size\": 2,\"total\": 2,\"entities\": [{\"entity_name\": \"小王\",\"create_time\": \"2016-11-01 11:56:32\",\"modify_time\": \"2016-11-01 13:27:59\",\"latest_location\": {\"loc_time\": 1477978078,\"longitude\": 116.3189288575,\"latitude\": 40.04780579193,\"direction\": 64,\"height\": 53,\"radius\": 4,\"speed\": 37.73},\"city\": \"北京\",\"district\": \"海淀\",\"entity_desc\": \"小王_01\"},{\"entity_name\": \"小明\",\"create_time\": \"2017-03-15 15:56:04\",\"modify_time\": \"2017-06-01 14:01:31\",\"latest_location\": {\"loc_time\": 1488785466,\"longitude\": 116.45644006808,\"latitude\": 39.929082990815,\"direction\": 12,\"height\": 113.76,\"radius\": 3,\"speed\": 15.23},\"city\": \"北京\",\"district\": \"海淀\",\"entity_desc\": \"小明_01\"}]}";
+
+        var model = Newtonsoft.Json.JsonConvert.DeserializeObject<BaiduMapAPI.YingYan.V3.Entity.ListResult>(json);
+
+        Console.ReadLine();
+    }
+
     /// <summary>
     /// 获取输入的 int 值
     /// </summary>
@@ -558,4 +568,6 @@ public static class Test
 
         return result;
     }
+
+    
 }

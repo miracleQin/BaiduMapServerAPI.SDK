@@ -110,7 +110,7 @@ namespace BaiduMapAPI.Utilities
             return result;
         }
 
-        internal static string GetUrl(string url, NameValueCollection query, bool urlEncode = true) 
+        internal static string GetUrl(string url, NameValueCollection query, bool urlEncode = true)
         {
             string result = null;
             result = string.Format("{0}?{1}", url, HttpBuildQuery(query, urlEncode));
@@ -155,22 +155,40 @@ namespace BaiduMapAPI.Utilities
                     {
                         properties = properties.Where(s => s.GetCustomAttribute<QueryParameterAttribute>() != null).ToArray();
                     }
-                    else return result;                    
+                    else return result;
                 }
 
                 foreach (var property in properties.Where(s => s.Name != "URL"))
                 {
-                    var display = property.GetCustomAttribute<DisplayAttribute>();
-                    var stringConvert = property.GetCustomAttribute<StringConverterAttribute>(true);
-
-                    string name = display == null ? property.Name : display.Name;
-                    var val = property.GetValue(data);
-                    string value = stringConvert == null ? val + "" : stringConvert.GetString(val);
-
-                    if (!string.IsNullOrEmpty(value))
+                    if (property.PropertyType != typeof(Dictionary<string, string>))
                     {
-                        result.Add(name, value);
+                        var display = property.GetCustomAttribute<DisplayAttribute>();
+                        var stringConvert = property.GetCustomAttribute<StringConverterAttribute>(true);
+
+                        string name = display == null ? property.Name : display.Name;
+                        var val = property.GetValue(data);
+                        string value = stringConvert == null ? val + "" : stringConvert.GetString(val);
+
+                        if (!string.IsNullOrEmpty(value))
+                        {
+                            result.Add(name, value);
+                        }
                     }
+                    else
+                    {
+                        var dic = property.GetValue(data) as Dictionary<string, string>;
+                        if (dic != null)
+                        {
+                            foreach (var kv in dic)
+                            {
+                                if (!string.IsNullOrEmpty(kv.Value))
+                                {
+                                    result.Add(kv.Key, kv.Value);
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
             return result;
