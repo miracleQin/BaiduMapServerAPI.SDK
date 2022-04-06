@@ -17,7 +17,9 @@ public static class Program
         //Console.WriteLine($"您输入的字符为：{inputStr}");
 
         Console.WriteLine("==================");
-        MainMethodHelper.Init(typeof(Test), args);
+        //MainMethodHelper.Init(typeof(Test), args);
+        BiaduMap.TestConsoleApp.Linux.AutoTestMethod.Init();
 
+        Console.ReadLine();
     }
 }
