@@ -56,13 +56,52 @@ namespace BaiduMapAPI.Utilities
 
 
 
-            HttpRequestMessage requestMsg = new HttpRequestMessage();
+            using (HttpRequestMessage requestMsg = new HttpRequestMessage())
+            {
 
-            requestMsg.RequestUri = new Uri(url);
-            requestMsg.Method = HttpMethod.Post;
-            requestMsg.Content = new FormUrlEncodedContent(data);
+                requestMsg.RequestUri = new Uri(url);
+                requestMsg.Method = HttpMethod.Post;
+                requestMsg.Content = new FormUrlEncodedContent(data);
 
-            result = await requestMsg.SendAndGetResultAsync<TResponse>();
+                result = await requestMsg.SendAndGetResultAsync<TResponse>();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 表单提交
+        /// </summary>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="request"></param>
+        /// <param name="AK"></param>
+        /// <returns></returns>
+        internal static async Task<TResponse> PostFormAsync<TResponse>(this Models.Request<TResponse> request, string AK)
+            where TResponse : Models.Response
+        {
+            TResponse result = default;
+            List<KeyValuePair<string, string>> data = new List<KeyValuePair<string, string>>();
+
+            System.Collections.Specialized.NameValueCollection qc = new System.Collections.Specialized.NameValueCollection();
+            qc.Add("ak", AK);
+            var tmp = request.GetPropertyStringValue();
+            foreach (var ky in tmp.AllKeys) qc.Add(ky, tmp[ky]);
+
+            var url = request.URL;
+
+
+            foreach (var key in qc.AllKeys)
+            {
+                data.Add(new KeyValuePair<string, string>(key, qc[key]));
+            }
+
+            using (HttpRequestMessage requestMsg = new HttpRequestMessage())
+            {
+                requestMsg.RequestUri = new Uri(url);
+                requestMsg.Method = HttpMethod.Post;
+                requestMsg.Content = new FormUrlEncodedContent(data);
+
+                result = await requestMsg.SendAndGetResultAsync<TResponse>();
+            }
 
             return result;
         }
@@ -85,13 +124,14 @@ namespace BaiduMapAPI.Utilities
             url = request.GetUrl(url);
             var requestBody = request.ToJson();
 
-            HttpRequestMessage requestMsg = new HttpRequestMessage();
-            requestMsg.Method = HttpMethod.Post;
-            requestMsg.RequestUri = new Uri(url);
-            requestMsg.Content = new StringContent(requestBody, Encoding.Default, "application/json");
+            using (HttpRequestMessage requestMsg = new HttpRequestMessage())
+            {
+                requestMsg.Method = HttpMethod.Post;
+                requestMsg.RequestUri = new Uri(url);
+                requestMsg.Content = new StringContent(requestBody, Encoding.Default, "application/json");
 
-            result = await requestMsg.SendAndGetResultAsync<TResponse>();
-
+                result = await requestMsg.SendAndGetResultAsync<TResponse>();
+            }
             return result;
         }
 
@@ -107,27 +147,26 @@ namespace BaiduMapAPI.Utilities
         {
             TResponse result = default;
 
-
-
             var url = $"{request.URL}{(request.URL.Contains("?") ? "&" : "?")}ak={AK}";
             url = request.GetUrl(url);
 
             var requestBody = request.ToJson();
 
-            HttpRequestMessage requestMsg = new HttpRequestMessage();
-            requestMsg.Method = HttpMethod.Put;
-            requestMsg.RequestUri = new Uri(url);
-            requestMsg.Content = new StringContent(requestBody, Encoding.Default, "application/json");
+            using (HttpRequestMessage requestMsg = new HttpRequestMessage())
+            {
+                requestMsg.Method = HttpMethod.Put;
+                requestMsg.RequestUri = new Uri(url);
+                requestMsg.Content = new StringContent(requestBody, Encoding.Default, "application/json");
 
-            result = await requestMsg.SendAndGetResultAsync<TResponse>();
-
+                result = await requestMsg.SendAndGetResultAsync<TResponse>();
+            }
+                
             return result;
         }
 
         /// <summary>
         /// 以 POST 形式请求接口
         /// </summary>
-        /// <typeparam name="TResponse"></typeparam>
         /// <param name="request"></param>
         /// <param name="AK"></param>
         /// <returns></returns>
@@ -228,7 +267,7 @@ namespace BaiduMapAPI.Utilities
             return result;
         }
 
-       
+
         internal static async Task<TResponse> GetWithoutSNAsync<TResponse>(this Models.Request<TResponse> request, string AK)
             where TResponse : Models.Response
         {
@@ -251,7 +290,7 @@ namespace BaiduMapAPI.Utilities
                 requestMsg.RequestUri = new Uri(url);
                 result = await requestMsg.SendAndGetResultAsync<TResponse>();
             }
-               
+
 
             return result;
         }
