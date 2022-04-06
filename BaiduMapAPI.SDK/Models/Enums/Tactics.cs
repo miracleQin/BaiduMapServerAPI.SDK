@@ -69,7 +69,7 @@ namespace BaiduMapAPI.Models.Enums
         LowFee = 6,
 
         /// <summary>
-        /// 躲避拥堵&高速优先
+        /// <![CDATA[躲避拥堵&高速优先]]> 
         /// </summary>
         [Description("躲避拥堵&高速优先")]
         NOT_TrafficJam_And_HightWayFirst = 7,
@@ -81,7 +81,7 @@ namespace BaiduMapAPI.Models.Enums
         NOT_TrafficJam_AND_NOT_HightWay = 8,
 
         /// <summary>
-        /// 躲避拥堵&少收费
+        /// <![CDATA[躲避拥堵&少收费]]> 
         /// </summary>
         [Description("躲避拥堵&少收费")]
         NOT_TrafficJam_AND_LowFee = 9,
@@ -204,7 +204,7 @@ namespace BaiduMapAPI.Models.Enums
         LowFee = 6,
 
         /// <summary>
-        /// 躲避拥堵&高速优先
+        /// <![CDATA[躲避拥堵&高速优先]]>
         /// </summary>
         [Description("躲避拥堵&高速优先")]
         NOT_TrafficJam_And_HightWayFirst = 7,
@@ -216,7 +216,7 @@ namespace BaiduMapAPI.Models.Enums
         NOT_TrafficJam_AND_NOT_HightWay = 8,
 
         /// <summary>
-        /// 躲避拥堵&少收费
+        /// <![CDATA[躲避拥堵&少收费]]>
         /// </summary>
         [Description("躲避拥堵&少收费")]
         NOT_TrafficJam_AND_LowFee = 9,
