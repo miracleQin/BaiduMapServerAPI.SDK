@@ -18,17 +18,23 @@ namespace BaiduMapAPI.Utilities
 
         private static string MD5(string password)
         {
-            try
+            string result = null;
+            Exception exception = null;
+            using(System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.MD5.Create())
             {
-                System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.MD5.Create();
-                byte[] hash_out = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-                var md5_str = BitConverter.ToString(hash_out).Replace("-", "");
-                return md5_str.ToLower();
+                try
+                {
+                    byte[] hash_out = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                    result = BitConverter.ToString(hash_out).Replace("-", "").ToLower();
+                }
+                catch (Exception ex)
+                {
+                    exception = ex;
+                }
             }
-            catch
-            {
-                throw;
-            }
+            if (exception != null) 
+                throw new Exception("在给字符串做MD5签名的过程中发生异常",exception);
+            return result;
         }
         internal static string UrlEncode(string str)
         {
@@ -48,25 +54,15 @@ namespace BaiduMapAPI.Utilities
         {
             StringBuilder sb = new StringBuilder();
 
-            if (urlEncoding)
+            Func<string, string> urlEncoder = UrlEncode;
+            if (!urlEncoding) urlEncoder = s => s;
+
+            foreach (var key in querystring_arrays.AllKeys)
             {
-                foreach (var key in querystring_arrays.AllKeys)
-                {
-                    sb.Append(UrlEncode(key));
-                    sb.Append("=");
-                    sb.Append(UrlEncode(querystring_arrays[key]));
-                    sb.Append("&");
-                }
-            }
-            else
-            {
-                foreach (var key in querystring_arrays.AllKeys)
-                {
-                    sb.Append(key);
-                    sb.Append("=");
-                    sb.Append(querystring_arrays[key]);
-                    sb.Append("&");
-                }
+                sb.Append(urlEncoder(key));
+                sb.Append("=");
+                sb.Append(urlEncoder(querystring_arrays[key]));
+                sb.Append("&");
             }
 
 
@@ -139,6 +135,7 @@ namespace BaiduMapAPI.Utilities
         /// 获取
         /// </summary>
         /// <param name="data"></param>
+        /// <param name="onlyAttribute"></param>
         /// <returns></returns>
         internal static NameValueCollection GetPropertyStringValue(this object data, bool onlyAttribute = false)
         {
