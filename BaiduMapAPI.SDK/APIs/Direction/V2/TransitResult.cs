@@ -191,7 +191,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
 
         /// <summary>
         /// 价格（元）
-        /// <para>本类型的票的总价para>
+        /// <para>本类型的票的总价</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ticket_price")]
         public double? TicketPrice { get; set; }

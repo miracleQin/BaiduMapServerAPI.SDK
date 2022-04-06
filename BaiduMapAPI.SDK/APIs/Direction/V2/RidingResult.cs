@@ -22,6 +22,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public RidingResultInfo Info { get; set; }
     }
 
+    /// <summary>
+    /// 版权信息
+    /// </summary>
     public class RidingResultInfo
     {
         /// <summary>
@@ -31,6 +34,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public RidingResultCopyRight Copyright { get; set; }
     }
 
+    /// <summary>
+    /// 版权信息
+    /// </summary>
     public class RidingResultCopyRight
     {
         /// <summary>
@@ -46,6 +52,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public string ImageURL { get; set; }
     }
 
+    /// <summary>
+    /// 返回的结果
+    /// </summary>
     public class RidingResultResult 
     {
         /// <summary>
@@ -67,6 +76,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<RidingResultRoute> Routes { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class RidingResultPointBase 
     {
         /// <summary>
@@ -97,6 +109,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
 
     }
 
+    /// <summary>
+    /// 起点信息
+    /// </summary>
     public class RidingResultOrigin : RidingResultPointBase
     {
         /// <summary>
@@ -105,7 +120,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         [Newtonsoft.Json.JsonProperty("originPt")]
         public Models.Location OriginPt { get; set; }
     }
-
+    /// <summary>
+    /// 终点信息
+    /// </summary>
     public class RidingResultDestination : RidingResultPointBase
     {
         /// <summary>
@@ -114,7 +131,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         [Newtonsoft.Json.JsonProperty("destinationPt")]
         public Models.Location DestinationPt { get; set; }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class RidingResultRoute
     {
         /// <summary>
@@ -150,7 +169,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         [Newtonsoft.Json.JsonProperty("steps")]
         public List<RidingResultStep> Steps { get; set; }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class RidingResultStep 
     {
         /// <summary>

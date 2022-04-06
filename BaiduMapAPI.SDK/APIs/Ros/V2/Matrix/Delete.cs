@@ -9,6 +9,9 @@ namespace BaiduMapAPI.APIs.Ros.V2.Matrix
     /// </summary>
     public class Delete : Models.JsonPutWithoutSNNoResponse
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v2/matrix/delete";
 
         /// <summary>

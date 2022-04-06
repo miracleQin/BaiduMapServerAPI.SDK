@@ -16,6 +16,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public MotorcycleResultResult Result { get; set; }
     }
 
+    /// <summary>
+    /// 摩托车规划结果
+    /// </summary>
     public class MotorcycleResultResult 
     {
         /// <summary>
@@ -41,6 +44,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<MotorcycleResultRoute> Routes { get; set; }
     }
 
+    /// <summary>
+    /// 摩托车规划方案
+    /// </summary>
     public class MotorcycleResultRoute 
     {
         /// <summary>
@@ -110,6 +116,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<MotorcycleResultStep> Steps { get; set; }
     }
 
+    /// <summary>
+    /// 限行信息
+    /// </summary>
     public class MotorcycleResultRestrictionInfo 
     {
         /// <summary>
@@ -126,6 +135,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public string Description { get; set; }
     }
 
+    /// <summary>
+    /// 摩托车规划路线分段
+    /// </summary>
     public class MotorcycleResultStep 
     {
         /// <summary>
@@ -226,6 +238,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public MotorcycleResultTrafficCondition TrafficCondition { get; set; }
     }
 
+    /// <summary>
+    /// 分段路况详情
+    /// </summary>
     public class MotorcycleResultTrafficCondition 
     {
         /// <summary>

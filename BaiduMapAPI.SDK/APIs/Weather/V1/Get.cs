@@ -14,6 +14,9 @@ namespace BaiduMapAPI.APIs.Weather.V1
     /// </summary>
     public class Get : Models.GetRequest<GetResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/weather/v1/";
 
         /// <summary>

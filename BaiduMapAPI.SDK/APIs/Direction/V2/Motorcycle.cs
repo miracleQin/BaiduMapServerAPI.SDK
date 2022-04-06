@@ -13,6 +13,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
     /// </summary>
     public class Motorcycle : Models.GetRequest<MotorcycleResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/direction/v2/motorcycle";
 
 

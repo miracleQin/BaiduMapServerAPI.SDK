@@ -10,6 +10,9 @@ namespace BaiduMapAPI.APIs.Track.V1
     /// </summary>
     public class Rectify : Models.FormDataPostRequest<RectifyResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/rectify/v1/track?";
 
         /// <summary>

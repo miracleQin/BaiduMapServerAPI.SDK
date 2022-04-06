@@ -24,6 +24,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
 
     }
 
+    /// <summary>
+    /// 驾车路线规划结果
+    /// </summary>
     public class DrivingResultResult
     {
         /// <summary>
@@ -62,6 +65,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<DrivingResultRoute> Routes { get; set; }
     }
 
+    /// <summary>
+    /// 方案
+    /// </summary>
     public class DrivingResultRoute
     {
         /// <summary>
@@ -157,6 +163,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<DrivingResultStep> Steps { get; set; }
     }
 
+    /// <summary>
+    /// 路线分段
+    /// </summary>
     public class DrivingResultStep
     {
         /// <summary>
@@ -261,6 +270,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<DrivingResulttTrafficCondition> TrafficCondition { get; set; }
     }
 
+    /// <summary>
+    /// 分段路况详情
+    /// </summary>
     public class DrivingResulttTrafficCondition 
     {
         /// <summary>

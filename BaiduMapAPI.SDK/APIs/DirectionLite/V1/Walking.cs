@@ -11,6 +11,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
     /// </summary>
     public class Walking : Models.GetRequest<WalkingResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/directionlite/v1/walking";
 
 

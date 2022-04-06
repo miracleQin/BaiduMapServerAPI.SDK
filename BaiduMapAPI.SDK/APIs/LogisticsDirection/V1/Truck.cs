@@ -13,6 +13,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
     /// </summary>
     public class Truck : Models.GetRequest<TruckResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/logistics_direction/v1/truck";
 
 

@@ -12,6 +12,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
     /// </summary>
     public class Driving : Models.GetRequest<DrivingResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/directionlite/v1/driving";
 
         /// <summary>
@@ -58,7 +61,7 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         /// <para>示例： 40.465,116.314|40.232,116.352|40.121,116.453</para>
         /// </summary>
         [Display(Name = "waypoints")]
-        [ListConverter("|")]
+        [LocationListConverter]
         public List<Models.Location> Waypoints { get; set; }
 
         /// <summary>
@@ -84,7 +87,7 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         /// <para>配合gps_direction字段使用，取值范围[0,2000]</para>
         /// </summary>
         [Display(Name = "radius")]
-        public float? radius { get; set; }
+        public float? Radius { get; set; }
 
         /// <summary>
         /// 起点车辆的行驶速度
@@ -119,7 +122,7 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         /// </summary>
         [Models.Attributes.UnixDateTimeConverter]
         [Display(Name = "timestamp")]
-        public DateTime Timestamp { get; set; } = DateTime.Now;
+        public DateTime? Timestamp { get; set; } = DateTime.Now;
 
     }
 }

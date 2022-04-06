@@ -16,6 +16,11 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public DrivingResultResult Result { get; set; }
     }
 
+
+
+    /// <summary>
+    /// 驾车规划返回结果
+    /// </summary>
     public class DrivingResultResult {
         /// <summary>
         /// 起点坐标
@@ -37,6 +42,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
 
     }
 
+    /// <summary>
+    /// 驾车规划返回方案
+    /// </summary>
     public class DrivingResultRoute 
     {
         /// <summary>
@@ -73,6 +81,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public List<DrivingResultStep> Steps { get; set; }
     }
 
+    /// <summary>
+    /// 路线分段
+    /// </summary>
     public class DrivingResultStep 
     {
         /// <summary>
@@ -161,6 +172,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public List<DrivingResultTrafficCondition> TrafficCondition { get; set; }
     }
 
+    /// <summary>
+    /// 分段路况详情
+    /// </summary>
     public class DrivingResultTrafficCondition 
     {
         /// <summary>
