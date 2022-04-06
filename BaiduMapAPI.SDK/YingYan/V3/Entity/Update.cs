@@ -8,7 +8,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
     /// <summary>
     /// 更新entity
     /// </summary>
-    public class Update : Models.FormDataPostRequest<UpdateResult>
+    public class Update : Models.FormDataPostWithoutSNRequest<UpdateResult>
     {
         /// <summary>
         /// 接口地址

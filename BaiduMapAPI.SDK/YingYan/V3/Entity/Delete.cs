@@ -8,7 +8,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
     /// <summary>
     /// 删除entity
     /// </summary>
-    public class Delete : Models.FormDataPostRequest<DeleteResult>
+    public class Delete : Models.FormDataPostWithoutSNRequest<DeleteResult>
     {
         /// <summary>
         /// 接口地址

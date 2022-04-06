@@ -10,7 +10,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
     /// <summary>
     /// 空间搜索通用基类
     /// </summary>
-    public abstract class SearchBase : Models.GetRequest<SearchResult>
+    public abstract class SearchBase : Models.GetWithoutSNRequest<SearchResult>
     {
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
     /// <summary>
     /// 添加entity
     /// </summary>
-    public class Add : Models.FormDataPostRequest<AddResult>
+    public class Add : Models.FormDataPostWithoutSNRequest<AddResult>
     {
         /// <summary>
         /// 接口地址
@@ -21,7 +21,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
         /// <para>service 的唯一标识</para>
         /// <para>在轨迹管理台创建鹰眼服务时，系统返回的 service_id</para>
         /// </summary>
-        [Display(Name= "service_id")]
+        [Display(Name = "service_id")]
         public int? ServiceID { get; set; }
 
         /// <summary>
