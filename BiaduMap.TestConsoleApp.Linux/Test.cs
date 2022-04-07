@@ -638,6 +638,13 @@ public static class Test
         Console.ReadLine();
     }
 
+    public static void TestConvertAddPointsResult() 
+    {
+        string json = "{\"status\":2,\"message\":\"point_list中没有符合条件的point\",\"fail_info\":{\"param_error\":[{\"entity_name\":\"22.858367\",\"latitude\":108.267962,\"error\":\"entity_name 类型不匹配\"}],\"internal_error\":[]},\"success_num\":0}";
+        var result= Newtonsoft.Json.JsonConvert.DeserializeObject<BaiduMapAPI.YingYan.V3.Track.AddPointsResult>(json);
+        Console.ReadLine();
+    }
+
     private static DateTime GetInputDateTime(string text)
     {
         DateTime result;

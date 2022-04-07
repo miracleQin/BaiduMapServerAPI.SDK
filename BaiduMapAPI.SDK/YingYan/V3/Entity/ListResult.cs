@@ -95,6 +95,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
         /// <summary>
         /// 该entity最新定位时间
         /// <para>该entity最新定位时间（定位时设备的时间）</para>
+        /// <para>该时间为Unix时间，未加时区</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("loc_time")]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
