@@ -51,5 +51,5 @@ var result = search.GetResult(AK, SK);
 20 | BaiduMapAPI.APIs.Weather | [国内天气查询服务](https://lbsyun.baidu.com/index.php?title=webapi/weather)
 21 | BaiduMapAPI.APIs.WeatherAbroad | [海外天气查询服务](https://lbsyun.baidu.com/index.php?title=webapi/weather-abroad)
 22 | BaiduMapAPI.YingYan.V3.Entity | [鹰眼-终端管理](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/entity)、[鹰眼-空间搜索](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/entitysearch)
-23 | BaiduMapAPI.YingYan.V3.Track | [鹰眼-轨迹上传](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/trackupload)
+23 | BaiduMapAPI.YingYan.V3.Track | [鹰眼-轨迹上传](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/trackupload)、[鹰眼-轨迹查询和纠偏](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/trackprocess)
 
