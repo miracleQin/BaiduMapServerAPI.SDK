@@ -53,3 +53,4 @@ var result = search.GetResult(AK, SK);
 22 | BaiduMapAPI.YingYan.V3.Entity | [鹰眼-终端管理](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/entity)、[鹰眼-空间搜索](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/entitysearch)
 23 | BaiduMapAPI.YingYan.V3.Track | [鹰眼-轨迹上传](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/trackupload)、[鹰眼-轨迹查询和纠偏](http://lbsyun.baidu.com/index.php?title=yingyan/api/v3/trackprocess)
 24 | BaiduMapAPI.YingYan.V3.Analysis | [鹰眼-轨迹分析](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/analysis)
+25 | BaiduMapAPI.YingYan.V3.FrequentRoute | [鹰眼-经验行为分析](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/empiricalbehavior)
