@@ -16,6 +16,10 @@ namespace BaiduMapAPI.Models.Attributes
         /// </summary>
         public string SplitStr { get; private set; }
 
+        /// <summary>
+        /// 列表对象转换器
+        /// </summary>
+        /// <param name="SplitStr">分隔符</param>
         public ListObjectConverterAttribute(string SplitStr = "|")
         {
             this.SplitStr = SplitStr;
