@@ -56,7 +56,11 @@ namespace BaiduMapAPI.Models
                 {
                     mediaType = response.Content.Headers.ContentType.MediaType;
                     using (var stream = await response.Content.ReadAsStreamAsync())
+                    {
+                        stream.Position = 0;
                         downloadStream = await stream.CloneAsync();
+                    }
+                        
                 }
 
             }

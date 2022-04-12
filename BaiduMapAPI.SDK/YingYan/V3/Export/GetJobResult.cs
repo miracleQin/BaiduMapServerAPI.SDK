@@ -153,8 +153,7 @@ namespace BaiduMapAPI.YingYan.V3.Export
         /// </para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("coord_type")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public Models.Enums.CoordType? CoordType { get; set; }
+        public string CoordType { get; set; }
     }
 
     /// <summary>
@@ -188,6 +187,20 @@ namespace BaiduMapAPI.YingYan.V3.Export
         [Newtonsoft.Json.JsonProperty("loc_time")]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
         public DateTime? LocationTime { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("create_time")]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        public DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modify_time")]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        public DateTime? ModifyTime { get; set; }
 
         /// <summary>
         /// 自定义数据

@@ -239,10 +239,8 @@ namespace BaiduMapAPI.Utilities
         internal static async Task<Stream> CloneAsync(this Stream tagStream)
         {
             MemoryStream result = new MemoryStream();
-            int bufferLength = 0;
+            int bufferLength = 1024;
             byte[] buffer = new byte[bufferLength];
-
-            tagStream.Position = 0;
 
             while ((bufferLength = await tagStream.ReadAsync(buffer, 0, bufferLength)) > 0)
                 await result.WriteAsync(buffer, 0, bufferLength);
