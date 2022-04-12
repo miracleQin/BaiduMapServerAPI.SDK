@@ -18,6 +18,12 @@ namespace BaiduMapAPI.APIs.Staticimage.V1
         /// </summary>
         public override string URL => "https://api.map.baidu.com/staticimage";
 
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        /// <param name="AK"></param>
+        /// <param name="SK"></param>
+        /// <returns></returns>
         public override async Task<V2.GetResult> GetResultAsync(string AK, string SK)
         {
             string url = "";

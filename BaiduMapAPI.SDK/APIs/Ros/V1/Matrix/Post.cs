@@ -46,7 +46,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Matrix
         [Newtonsoft.Json.JsonConverter(typeof(Models.JsonConverter.FlagEnumConverter))]
         public Models.Enums.RosMatrixVehicleType VehicleType { get; set; }
     }
-
+    /// <summary>
+    /// 客户网点信息
+    /// </summary>
     public class PostLocation : Models.LocationDetail
     {
         /// <summary>

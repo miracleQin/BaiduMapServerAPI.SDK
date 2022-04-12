@@ -10,6 +10,11 @@ namespace BaiduMapAPI.Models.Attributes
     /// </summary>
     public class UnixDateTimeConverterAttribute : StringConverterAttribute
     {
+        /// <summary>
+        /// 获取字符串格式结果
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public override string GetString(object value)
         {
             var dt = value as DateTime?;

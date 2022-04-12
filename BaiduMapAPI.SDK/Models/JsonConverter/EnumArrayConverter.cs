@@ -7,17 +7,30 @@ using System.Text;
 
 namespace BaiduMapAPI.Models.JsonConverter
 {
+    /// <summary>
+    /// 与运算枚举转换器
+    /// </summary>
     public class FlagEnumConverter : Newtonsoft.Json.JsonConverter
     {
+        /// <summary>
+        /// 与运算枚举转换器
+        /// </summary>
         public FlagEnumConverter()
         {
             this.IdentityID = Guid.NewGuid();
         }
+        /// <summary>
+        /// 实例化对象唯一标识
+        /// </summary>
         public Guid IdentityID { get; private set; }
         private Type tagType;
         private Dictionary<int, string> Options { get; set; } = new Dictionary<int, string>();
 
-
+        /// <summary>
+        /// 判断是否能转换
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <returns></returns>
         public override bool CanConvert(Type objectType)
         {
             bool result = false;
@@ -46,7 +59,14 @@ namespace BaiduMapAPI.Models.JsonConverter
         }
 
 
-
+        /// <summary>
+        /// 从 JSON 中读取
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="objectType"></param>
+        /// <param name="existingValue"></param>
+        /// <param name="serializer"></param>
+        /// <returns></returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             object result = null;
@@ -72,6 +92,12 @@ namespace BaiduMapAPI.Models.JsonConverter
             return result;
         }
 
+        /// <summary>
+        /// 写入 JSON
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="value"></param>
+        /// <param name="serializer"></param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value == null)

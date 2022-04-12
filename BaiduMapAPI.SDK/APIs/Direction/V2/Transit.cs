@@ -132,6 +132,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public string Output { get; set; } = "json";
     }
 
+    /// <summary>
+    /// 时间区间
+    /// </summary>
     public class TransitDepartureTime
     {
         /// <summary>

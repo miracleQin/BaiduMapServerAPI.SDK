@@ -11,6 +11,9 @@ namespace BaiduMapAPI.APIs.Place.V2
     /// </summary>
     public class Suggestion : Models.GetRequest<SuggestionResult>
     {
+        /// <summary>
+        /// 地点输入提示服务
+        /// </summary>
         public Suggestion()
         {
             this.Timestamp = DateTime.Now;

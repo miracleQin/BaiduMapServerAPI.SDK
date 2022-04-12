@@ -64,6 +64,12 @@ namespace BaiduMapAPI.APIs.Weather.V1
         [EnumName]
         public Models.Enums.CoordType? CoordType { get; set; }
 
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        /// <param name="AK"></param>
+        /// <param name="SK"></param>
+        /// <returns></returns>
         public override async Task<GetResult> GetResultAsync(string AK, string SK)
         {
             if (!string.IsNullOrEmpty(LocationName) && Location != null)

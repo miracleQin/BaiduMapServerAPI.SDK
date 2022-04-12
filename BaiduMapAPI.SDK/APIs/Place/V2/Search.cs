@@ -13,6 +13,9 @@ namespace BaiduMapAPI.APIs.Place.V2
     /// </summary>
     public class SearchBase : Models.GetRequest<SearchResult>
     {
+        /// <summary>
+        /// 地点检索基础请求
+        /// </summary>
         public SearchBase()
         {
             this.Output = "json";

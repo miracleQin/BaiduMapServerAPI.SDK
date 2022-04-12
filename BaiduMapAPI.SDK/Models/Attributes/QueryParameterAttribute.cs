@@ -14,6 +14,11 @@ namespace BaiduMapAPI.Models.Attributes
         /// 参数名
         /// </summary>
         public string ParameterName { get; private set; }
+
+        /// <summary>
+        /// 参数属性
+        /// </summary>
+        /// <param name="ParameterName"></param>
         public QueryParameterAttribute(string ParameterName)
         {
             this.ParameterName = ParameterName;

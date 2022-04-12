@@ -9,7 +9,13 @@ namespace BaiduMapAPI.Models.Enums
     /// </summary>
     public enum HttpMethod
     {
+        /// <summary>
+        /// GET 形式
+        /// </summary>
         GET = 0,
+        /// <summary>
+        /// POS 形式
+        /// </summary>
         POST = 1,
     }
 }

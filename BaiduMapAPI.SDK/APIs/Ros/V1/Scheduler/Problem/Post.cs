@@ -101,6 +101,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Problem
         SMALL_SCALE_GENERAL=3,
     }
 
+    /// <summary>
+    /// 仓库信息
+    /// </summary>
     public class PostDepot 
     {
         /// <summary>

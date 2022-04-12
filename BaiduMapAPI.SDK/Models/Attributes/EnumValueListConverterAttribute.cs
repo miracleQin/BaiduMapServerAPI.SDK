@@ -48,6 +48,11 @@ namespace BaiduMapAPI.Models.Attributes
             else getter = NameGetter;
         }
 
+        /// <summary>
+        /// 获取字符串结果
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public override string GetString(object value)
         {
             string result = null;

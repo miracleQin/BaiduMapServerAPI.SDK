@@ -36,6 +36,9 @@ namespace BaiduMapAPI.Models.Enums
         ShortWay = 3,
     }
 
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum TacticsDetail
     {
         /// <summary>
@@ -99,6 +102,9 @@ namespace BaiduMapAPI.Models.Enums
         NOT_HightWay_AND_LowFee = 11,
     }
 
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum TacticsIncity
     {
         /// <summary>
@@ -137,7 +143,9 @@ namespace BaiduMapAPI.Models.Enums
         [Description("地铁优先")]
         MetroPriority = 5,
     }
-
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum TacticsIntercity
     {
         /// <summary>
@@ -241,6 +249,9 @@ namespace BaiduMapAPI.Models.Enums
         ShortWayFirst = 12,
     }
 
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum LogisticsDirectionTruckTactics 
     {
         /// <summary>

@@ -135,7 +135,9 @@ namespace BaiduMapAPI.APIs.Place.V2
         public string ContentTag { get; set; }
     }
 
-
+    /// <summary>
+    /// POI 地址信息
+    /// </summary>
     public class SearchResultItemDetailChild 
     {
         /// <summary>

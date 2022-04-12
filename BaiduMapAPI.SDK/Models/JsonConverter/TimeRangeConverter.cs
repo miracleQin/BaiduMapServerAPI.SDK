@@ -15,6 +15,9 @@ namespace BaiduMapAPI.Models.JsonConverter
         /// </summary>
         public string Pattern { get; private set; }
 
+        /// <summary>
+        /// 时间范围转换器
+        /// </summary>
         public TimeRangeConverter()
         {
             this.Pattern = @"^(?<start>[0-9]{1,2}\:[0-9]{1,2}\:[0-9]{1,2}),(?<end>[0-9]{1,2}\:[0-9]{1,2}\:[0-9]{1,2})$";

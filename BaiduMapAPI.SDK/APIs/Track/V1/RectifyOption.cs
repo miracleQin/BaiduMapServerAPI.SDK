@@ -5,6 +5,9 @@ using System.Text;
 
 namespace BaiduMapAPI.APIs.Track.V1
 {
+    /// <summary>
+    /// 待匹配轨迹的纠偏参数设置
+    /// </summary>
     public class RectifyOption
     {
         /// <summary>

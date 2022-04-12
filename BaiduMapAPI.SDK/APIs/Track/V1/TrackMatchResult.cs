@@ -17,6 +17,9 @@ namespace BaiduMapAPI.APIs.Track.V1
         public TrackMatchResultData Data { get; set; }
     }
 
+    /// <summary>
+    /// 分析结果
+    /// </summary>
     public class TrackMatchResultData
     {
         /// <summary>
@@ -86,6 +89,9 @@ namespace BaiduMapAPI.APIs.Track.V1
         public double? ProcessedTrackDistance { get; set; }
     }
 
+    /// <summary>
+    /// 纠偏后的基准轨迹
+    /// </summary>
     public class TrackMatchResultProcessedStandardTrack
     {
         /// <summary>
@@ -104,6 +110,9 @@ namespace BaiduMapAPI.APIs.Track.V1
 
     }
 
+    /// <summary>
+    /// 纠偏后的待匹配轨迹
+    /// </summary>
     public class TrackMatchResultProcessedTrack : TrackMatchResultProcessedStandardTrack
     {
         /// <summary>

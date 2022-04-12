@@ -249,6 +249,12 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         [Display(Name = "experience_track")]
         public List<TruckExperienceTrack> ExperienceTrack { get; set; }
 
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        /// <param name="AK"></param>
+        /// <param name="SK"></param>
+        /// <returns></returns>
         public override Task<TruckResult> GetResultAsync(string AK, string SK)
         {
             if (ExperienceTrack == null || ExperienceTrack.Count == 0)
@@ -258,6 +264,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         }
     }
 
+    /// <summary>
+    /// 经验轨迹信息
+    /// </summary>
     public class TruckExperienceTrack
     {
         /// <summary>
@@ -270,6 +279,10 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         /// </summary>
         public DateTime? Datetime { get; set; }
 
+        /// <summary>
+        /// 转字符串
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Location.Lat},{Location.Lng},{(Datetime.HasValue ? Datetime.ToTimestamp() : "0")}";
