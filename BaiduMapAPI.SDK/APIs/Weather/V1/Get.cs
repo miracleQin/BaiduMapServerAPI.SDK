@@ -14,6 +14,9 @@ namespace BaiduMapAPI.APIs.Weather.V1
     /// </summary>
     public class Get : Models.GetRequest<GetResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/weather/v1/";
 
         /// <summary>
@@ -61,6 +64,12 @@ namespace BaiduMapAPI.APIs.Weather.V1
         [EnumName]
         public Models.Enums.CoordType? CoordType { get; set; }
 
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        /// <param name="AK"></param>
+        /// <param name="SK"></param>
+        /// <returns></returns>
         public override async Task<GetResult> GetResultAsync(string AK, string SK)
         {
             if (!string.IsNullOrEmpty(LocationName) && Location != null)

@@ -23,6 +23,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public int? Type { get; set; }
     }
 
+    /// <summary>
+    /// 公交规划结果
+    /// </summary>
     public class TransitResultResult
     {
 
@@ -60,6 +63,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<TransitResultRouteInfo> Routes { get; set; }
     }
 
+    /// <summary>
+    /// 城市信息
+    /// </summary>
     public class TransitResultCityInfo
     {
         /// <summary>
@@ -81,7 +87,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public Models.Location Location { get; set; }
 
     }
-
+    /// <summary>
+    /// 出租车信息
+    /// </summary>
     public class TransitResultTaxiInfo
     {
         /// <summary>
@@ -108,7 +116,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         [Newtonsoft.Json.JsonProperty("remark")]
         public string Remark { get; set; }
     }
-
+    /// <summary>
+    /// 出租车详细信息
+    /// </summary>
     public class TransitResultTaxiDetail
     {
         /// <summary>
@@ -136,6 +146,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public double? TotalPrice { get; set; }
     }
 
+    /// <summary>
+    /// 路线信息
+    /// </summary>
     public class TransitResultRouteInfo
     {
         /// <summary>
@@ -181,6 +194,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public List<List<TransitResultStep>> Steps { get; set; }
     }
 
+    /// <summary>
+    /// 车票详情
+    /// </summary>
     public class TransitResultPriceDetail
     {
         /// <summary>
@@ -191,7 +207,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
 
         /// <summary>
         /// 价格（元）
-        /// <para>本类型的票的总价para>
+        /// <para>本类型的票的总价</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ticket_price")]
         public double? TicketPrice { get; set; }
@@ -245,7 +261,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public TransitResultVehicleInfo VehicleInfo { get; set; }
     }
 
-
+    /// <summary>
+    /// 路况信息
+    /// </summary>
     public class TransitResultTrafficCondition
     {
         /// <summary>
@@ -261,6 +279,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public Models.Location End { get; set; }
     }
 
+    /// <summary>
+    /// 交通方式信息
+    /// </summary>
     public class TransitResultVehicleInfo
     {
         /// <summary>
@@ -277,6 +298,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public TransitResultVehicleInfoDetail Detail { get; set; }
     }
 
+    /// <summary>
+    /// 交通方式具体信息
+    /// </summary>
     public class TransitResultVehicleInfoDetail
     {
         /// <summary>
@@ -400,6 +424,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         public TransitResultEndInfo EndInfo { get; set; }
     }
 
+    /// <summary>
+    /// 起点站信息
+    /// </summary>
     public class TransitResultStartInfo
     {
         /// <summary>
@@ -433,7 +460,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
         [Newtonsoft.Json.JsonProperty("start_location")]
         public Models.Location StartLocation { get; set; }
     }
-
+    /// <summary>
+    /// 终点站信息
+    /// </summary>
     public class TransitResultEndInfo
     {
         /// <summary>

@@ -10,12 +10,14 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
     public class TransitResult : Models.ResponseOld
     {
         /// <summary>
-        /// 
+        /// 公交规划结果
         /// </summary>
         [Newtonsoft.Json.JsonProperty("result")]
         public TransitResultResult Result { get; set; }
     }
-
+    /// <summary>
+    /// 公交规划结果
+    /// </summary>
     public class TransitResultResult : DrivingResultResult 
     {
         /// <summary>
@@ -30,6 +32,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public new List<TransitResultRoute> Routes { get; set; }
     }
 
+    /// <summary>
+    /// 路线方案
+    /// </summary>
     public class TransitResultTaxi 
     {
         /// <summary>
@@ -57,6 +62,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public string Remark { get; set; }
     }
 
+    /// <summary>
+    /// 出租车备注信息
+    /// </summary>
     public class TransitResultTaxiDetail 
     {
         /// <summary>
@@ -85,6 +93,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public double? TotalPrice { get; set; }
     }
 
+    /// <summary>
+    /// 路线方案
+    /// </summary>
     public class TransitResultRoute : DrivingResultRoute
     {
 
@@ -110,6 +121,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public new List<List<TransitResultStep>> Steps { get; set; }
     }
 
+    /// <summary>
+    /// 车票详细信息
+    /// </summary>
     public class TransitResultLinePrice
     {
         /// <summary>
@@ -125,6 +139,10 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         [Newtonsoft.Json.JsonProperty("line_price")]
         public double? Price { get; set; }
     }
+
+    /// <summary>
+    /// 路线分段
+    /// </summary>
     public class TransitResultStep : DrivingResultStep
     {
         /// <summary>
@@ -140,6 +158,9 @@ namespace BaiduMapAPI.APIs.DirectionLite.V1
         public TransitResultVehicle Vehicle { get; set; }
     }
 
+    /// <summary>
+    /// 交通工具信息
+    /// </summary>
     public class TransitResultVehicle
     {
         /// <summary>

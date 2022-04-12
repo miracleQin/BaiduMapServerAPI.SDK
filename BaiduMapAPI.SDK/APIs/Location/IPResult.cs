@@ -9,6 +9,9 @@ namespace BaiduMapAPI.APIs.Location
     /// </summary>
     public class IPResult : Models.ResponseOld
     {
+        /// <summary>
+        /// 地址内容
+        /// </summary>
         public class IPResultContent 
         {
             /// <summary>
@@ -31,6 +34,9 @@ namespace BaiduMapAPI.APIs.Location
             public Models.Point Point { get; set; }
         }
 
+        /// <summary>
+        /// 地址详情
+        /// </summary>
         public class IPResultAddressDetail 
         {
             /// <summary>

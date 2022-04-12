@@ -11,6 +11,9 @@ namespace BaiduMapAPI.APIs.Direction.V2
     /// </summary>
     public class Riding : Models.GetRequest<RidingResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/direction/v2/riding";
 
         /// <summary>

@@ -11,11 +11,17 @@ namespace BaiduMapAPI.APIs.Place.V2
     /// </summary>
     public class Suggestion : Models.GetRequest<SuggestionResult>
     {
+        /// <summary>
+        /// 地点输入提示服务
+        /// </summary>
         public Suggestion()
         {
             this.Timestamp = DateTime.Now;
             this.Output = "json";
         }
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/place/v2/suggestion";
 
         /// <summary>

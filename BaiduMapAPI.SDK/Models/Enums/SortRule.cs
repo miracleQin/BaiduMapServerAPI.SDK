@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiduMapAPI.Models.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -13,13 +14,13 @@ namespace BaiduMapAPI.Models.Enums
         /// <summary>
         /// 从低到高
         /// </summary>
-        [Description("从低到高")]
+        [CustomDescription("从低到高","asc")]
         Asc = 1,
 
         /// <summary>
         /// 从高到低
         /// </summary>
-        [Description("从高到低")]
+        [CustomDescription("从高到低","desc")]
         Desc = 0,
     }
 }

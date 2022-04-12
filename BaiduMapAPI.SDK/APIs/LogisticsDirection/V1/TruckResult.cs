@@ -17,6 +17,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         public TruckResultResult Result { get; set; }
     }
 
+    /// <summary>
+    /// 规划结果
+    /// </summary>
     public class TruckResultResult
     {
         /// <summary>
@@ -46,6 +49,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         public List<TruckResultRoute> Routes { get; set; }
     }
 
+    /// <summary>
+    /// 车牌限行信息
+    /// </summary>
     public class TruckResultRestriction
     {
         /// <summary>
@@ -61,6 +67,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         public string Info { get; set; }
     }
 
+    /// <summary>
+    /// 方案
+    /// </summary>
     public class TruckResultRoute
     {
         /// <summary>
@@ -144,6 +153,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         public List<TruckResultStep> Steps { get; set; }
     }
 
+    /// <summary>
+    /// 路线分段信息
+    /// </summary>
     public class TruckResultStep
     {
 
@@ -240,6 +252,9 @@ namespace BaiduMapAPI.APIs.LogisticsDirection.V1
         public List<TruckResultTrafficCondition> TrafficCondition { get; set; }
     }
 
+    /// <summary>
+    /// 分段详情
+    /// </summary>
     public class TruckResultTrafficCondition 
     {
 

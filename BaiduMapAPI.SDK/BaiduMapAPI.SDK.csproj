@@ -1,42 +1,45 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>BaiduMapAPI</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-    <Authors>狮主</Authors>
-    <Description>百度地图服务端API对接工具</Description>
-    <PackageProjectUrl></PackageProjectUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/miracleQin/BaiduMapServerAPI.SDK.git</RepositoryUrl>
-    <PackageTags>BiaduMap Server API</PackageTags>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Copyright>LeoncinoQin</Copyright>
-    <RepositoryType>git</RepositoryType>
-	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>BaiduMapAPI</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyVersion>1.0.1.1</AssemblyVersion>
+		<FileVersion>1.0.1.1</FileVersion>
+		<VersionPrefix>1.0.1</VersionPrefix>
+		<Authors>狮主</Authors>
+		<Description>百度地图服务端API对接工具</Description>
+		<PackageProjectUrl>https://github.com/miracleQin/BaiduMapServerAPI.SDK</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/miracleQin/BaiduMapServerAPI.SDK.git</RepositoryUrl>
+		<PackageTags>BiaduMap Server API</PackageTags>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Copyright>LeoncinoQin</Copyright>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReleaseNotes>1. 增加鹰眼轨迹服务接口对接实现；2. 修复轻型驾车路线规划途经点BUG；3. 补全部分缺失注释信息。</PackageReleaseNotes>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\BaiduMapAPI.SDK.xml</DocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\BaiduMapAPI.SDK.xml</DocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-	  <None Include="..\LICENSE.txt">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-	  </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE.txt">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+		<PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
 
 </Project>

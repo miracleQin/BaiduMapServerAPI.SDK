@@ -124,7 +124,7 @@ namespace BaiduMapAPI.APIs.AddressAnalyzer.V1
         /// 输入地址不合规提示
         /// <para>"|行政区划冲突" "|行政区划冗余" "|省级地址结构缺失" "|省级行政区划错误" "|城市级地址结构缺失" "|城市级行政区划错误" "|区县级地址结构缺失" "|区县级行政区划错误" "|乡镇级地址结构缺失"</para>
         /// <para>行政区划冲突 注意：该功能为高级付费服务，用户不能直接在官网付费入口中直接购买，如有采买需求，请提交工单联系我们，将有商务与您取得联系。</para>
-        /// <para>http://lbsyun.baidu.com/apiconsole/fankui#?typeOne=%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82&typeTwo=%E6%96%B0%E6%9C%8D%E5%8A%A1/%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82</para>
+        /// <para><![CDATA[http://lbsyun.baidu.com/apiconsole/fankui#?typeOne=%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82&typeTwo=%E6%96%B0%E6%9C%8D%E5%8A%A1/%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82]]></para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("problem")]
         public string Problem { get; set; }

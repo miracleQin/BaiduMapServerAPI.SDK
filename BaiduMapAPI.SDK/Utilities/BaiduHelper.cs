@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BaiduMapAPI.Utilities
 {
@@ -18,17 +20,23 @@ namespace BaiduMapAPI.Utilities
 
         private static string MD5(string password)
         {
-            try
+            string result = null;
+            Exception exception = null;
+            using (System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.MD5.Create())
             {
-                System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.MD5.Create();
-                byte[] hash_out = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-                var md5_str = BitConverter.ToString(hash_out).Replace("-", "");
-                return md5_str.ToLower();
+                try
+                {
+                    byte[] hash_out = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                    result = BitConverter.ToString(hash_out).Replace("-", "").ToLower();
+                }
+                catch (Exception ex)
+                {
+                    exception = ex;
+                }
             }
-            catch
-            {
-                throw;
-            }
+            if (exception != null)
+                throw new Exception("在给字符串做MD5签名的过程中发生异常", exception);
+            return result;
         }
         internal static string UrlEncode(string str)
         {
@@ -48,25 +56,15 @@ namespace BaiduMapAPI.Utilities
         {
             StringBuilder sb = new StringBuilder();
 
-            if (urlEncoding)
+            Func<string, string> urlEncoder = UrlEncode;
+            if (!urlEncoding) urlEncoder = s => s;
+
+            foreach (var key in querystring_arrays.AllKeys)
             {
-                foreach (var key in querystring_arrays.AllKeys)
-                {
-                    sb.Append(UrlEncode(key));
-                    sb.Append("=");
-                    sb.Append(UrlEncode(querystring_arrays[key]));
-                    sb.Append("&");
-                }
-            }
-            else
-            {
-                foreach (var key in querystring_arrays.AllKeys)
-                {
-                    sb.Append(key);
-                    sb.Append("=");
-                    sb.Append(querystring_arrays[key]);
-                    sb.Append("&");
-                }
+                sb.Append(urlEncoder(key));
+                sb.Append("=");
+                sb.Append(urlEncoder(querystring_arrays[key]));
+                sb.Append("&");
             }
 
 
@@ -110,7 +108,7 @@ namespace BaiduMapAPI.Utilities
             return result;
         }
 
-        internal static string GetUrl(string url, NameValueCollection query, bool urlEncode = true) 
+        internal static string GetUrl(string url, NameValueCollection query, bool urlEncode = true)
         {
             string result = null;
             result = string.Format("{0}?{1}", url, HttpBuildQuery(query, urlEncode));
@@ -139,6 +137,7 @@ namespace BaiduMapAPI.Utilities
         /// 获取
         /// </summary>
         /// <param name="data"></param>
+        /// <param name="onlyAttribute"></param>
         /// <returns></returns>
         internal static NameValueCollection GetPropertyStringValue(this object data, bool onlyAttribute = false)
         {
@@ -155,22 +154,40 @@ namespace BaiduMapAPI.Utilities
                     {
                         properties = properties.Where(s => s.GetCustomAttribute<QueryParameterAttribute>() != null).ToArray();
                     }
-                    else return result;                    
+                    else return result;
                 }
 
                 foreach (var property in properties.Where(s => s.Name != "URL"))
                 {
-                    var display = property.GetCustomAttribute<DisplayAttribute>();
-                    var stringConvert = property.GetCustomAttribute<StringConverterAttribute>(true);
-
-                    string name = display == null ? property.Name : display.Name;
-                    var val = property.GetValue(data);
-                    string value = stringConvert == null ? val + "" : stringConvert.GetString(val);
-
-                    if (!string.IsNullOrEmpty(value))
+                    if (property.PropertyType != typeof(Dictionary<string, string>))
                     {
-                        result.Add(name, value);
+                        var display = property.GetCustomAttribute<DisplayAttribute>();
+                        var stringConvert = property.GetCustomAttribute<StringConverterAttribute>(true);
+
+                        string name = display == null ? property.Name : display.Name;
+                        var val = property.GetValue(data);
+                        string value = stringConvert == null ? val + "" : stringConvert.GetString(val);
+
+                        if (!string.IsNullOrEmpty(value))
+                        {
+                            result.Add(name, value);
+                        }
                     }
+                    else
+                    {
+                        var dic = property.GetValue(data) as Dictionary<string, string>;
+                        if (dic != null)
+                        {
+                            foreach (var kv in dic)
+                            {
+                                if (!string.IsNullOrEmpty(kv.Value))
+                                {
+                                    result.Add(kv.Key, kv.Value);
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
             return result;
@@ -184,6 +201,52 @@ namespace BaiduMapAPI.Utilities
         internal static string ToCSS(this System.Drawing.Color color)
         {
             return $"0x{color.R:X2}{color.G:X2}{color.B:X2}";
+        }
+
+        /// <summary>
+        /// 获取枚举自定义描述特性
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enumField"></param>
+        /// <returns></returns>
+        internal static CustomDescriptionAttribute GetCustomDescription<TEnum>(this TEnum? enumField)
+            where TEnum : struct
+        {
+            return enumField == null ? null : enumField.Value.GetCustomDescription();
+        }
+
+        /// <summary>
+        /// 获取枚举自定义描述特性
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enumField"></param>
+        /// <returns></returns>
+        internal static CustomDescriptionAttribute GetCustomDescription<TEnum>(this TEnum enumField)
+            where TEnum : struct
+        {
+            CustomDescriptionAttribute result = null;
+            var enumType = typeof(TEnum);
+            var fieldType = enumType.GetField(enumField.ToString());
+            result = fieldType.GetCustomAttribute<CustomDescriptionAttribute>();
+            return result;
+        }
+
+        /// <summary>
+        /// 复制流
+        /// </summary>
+        /// <param name="tagStream">原流对象</param>
+        /// <returns></returns>
+        internal static async Task<Stream> CloneAsync(this Stream tagStream)
+        {
+            MemoryStream result = new MemoryStream();
+            int bufferLength = 1024;
+            byte[] buffer = new byte[bufferLength];
+
+            while ((bufferLength = await tagStream.ReadAsync(buffer, 0, bufferLength)) > 0)
+                await result.WriteAsync(buffer, 0, bufferLength);
+
+            result.Position = 0;
+            return result;
         }
     }
 }

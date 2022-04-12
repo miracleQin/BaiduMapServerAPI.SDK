@@ -11,6 +11,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Problem
     /// </summary>
     public class Post : Models.JsonPostWithoutSN<PostResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v1/scheduler/problem";
 
         /// <summary>
@@ -98,6 +101,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Problem
         SMALL_SCALE_GENERAL=3,
     }
 
+    /// <summary>
+    /// 仓库信息
+    /// </summary>
     public class PostDepot 
     {
         /// <summary>

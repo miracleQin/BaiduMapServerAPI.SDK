@@ -36,6 +36,9 @@ namespace BaiduMapAPI.Models.Enums
         ShortWay = 3,
     }
 
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum TacticsDetail
     {
         /// <summary>
@@ -69,7 +72,7 @@ namespace BaiduMapAPI.Models.Enums
         LowFee = 6,
 
         /// <summary>
-        /// 躲避拥堵&高速优先
+        /// <![CDATA[躲避拥堵&高速优先]]> 
         /// </summary>
         [Description("躲避拥堵&高速优先")]
         NOT_TrafficJam_And_HightWayFirst = 7,
@@ -81,7 +84,7 @@ namespace BaiduMapAPI.Models.Enums
         NOT_TrafficJam_AND_NOT_HightWay = 8,
 
         /// <summary>
-        /// 躲避拥堵&少收费
+        /// <![CDATA[躲避拥堵&少收费]]> 
         /// </summary>
         [Description("躲避拥堵&少收费")]
         NOT_TrafficJam_AND_LowFee = 9,
@@ -99,6 +102,9 @@ namespace BaiduMapAPI.Models.Enums
         NOT_HightWay_AND_LowFee = 11,
     }
 
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum TacticsIncity
     {
         /// <summary>
@@ -137,7 +143,9 @@ namespace BaiduMapAPI.Models.Enums
         [Description("地铁优先")]
         MetroPriority = 5,
     }
-
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum TacticsIntercity
     {
         /// <summary>
@@ -204,7 +212,7 @@ namespace BaiduMapAPI.Models.Enums
         LowFee = 6,
 
         /// <summary>
-        /// 躲避拥堵&高速优先
+        /// <![CDATA[躲避拥堵&高速优先]]>
         /// </summary>
         [Description("躲避拥堵&高速优先")]
         NOT_TrafficJam_And_HightWayFirst = 7,
@@ -216,7 +224,7 @@ namespace BaiduMapAPI.Models.Enums
         NOT_TrafficJam_AND_NOT_HightWay = 8,
 
         /// <summary>
-        /// 躲避拥堵&少收费
+        /// <![CDATA[躲避拥堵&少收费]]>
         /// </summary>
         [Description("躲避拥堵&少收费")]
         NOT_TrafficJam_AND_LowFee = 9,
@@ -241,6 +249,9 @@ namespace BaiduMapAPI.Models.Enums
         ShortWayFirst = 12,
     }
 
+    /// <summary>
+    /// 路线偏好
+    /// </summary>
     public enum LogisticsDirectionTruckTactics 
     {
         /// <summary>

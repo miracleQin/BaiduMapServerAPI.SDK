@@ -10,6 +10,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.FastOrder
     /// </summary>
     public class Post : Models.JsonPostWithoutSN<PostResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v1/scheduler/fastorder";
 
         /// <summary>
@@ -27,6 +30,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.FastOrder
         public List<FastOrderDepot> Depots { get; set; }
     }
 
+    /// <summary>
+    /// 仓库信息
+    /// </summary>
     public class FastOrderDepot
     {
         /// <summary>
@@ -68,6 +74,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.FastOrder
         public List<FastOrderServiceJob> ServiceJobs { get; set; }
     }
 
+    /// <summary>
+    /// 车辆组信息
+    /// </summary>
     public class FastOrderVehicleGroup
     {
         /// <summary>
@@ -153,7 +162,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.FastOrder
         public int? EndTime { get; set; }
     }
 
-
+    /// <summary>
+    /// 网点信息
+    /// </summary>
     public class FastOrderServiceJob : Problem.ServiceJob
     {
 

@@ -13,11 +13,18 @@ namespace BaiduMapAPI.APIs.Place.V2
     /// </summary>
     public class SearchBase : Models.GetRequest<SearchResult>
     {
+        /// <summary>
+        /// 地点检索基础请求
+        /// </summary>
         public SearchBase()
         {
             this.Output = "json";
             this.Timestamp = DateTime.Now;
         }
+
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/place/v2/search";
 
         /// <summary>

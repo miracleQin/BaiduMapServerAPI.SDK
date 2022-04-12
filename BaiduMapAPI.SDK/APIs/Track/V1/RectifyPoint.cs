@@ -4,6 +4,9 @@ using System.Text;
 
 namespace BaiduMapAPI.APIs.Track.V1
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RectifyPointBase
     {
         /// <summary>
@@ -60,6 +63,9 @@ namespace BaiduMapAPI.APIs.Track.V1
         public double? Radius { get; set; }
     }
 
+    /// <summary>
+    /// 轨迹点信息
+    /// </summary>
     public class RectifyPoint: RectifyPointBase
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace BaiduMapAPI.APIs.Track.V1
         public Models.Enums.CoordType CoordTypeInput { get; set; }
     }
 
+    /// <summary>
+    /// 历史轨迹点信息
+    /// </summary>
     public class RectifyPointResult : RectifyPointBase 
     {
         /// <summary>

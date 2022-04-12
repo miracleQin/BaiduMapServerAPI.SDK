@@ -10,6 +10,9 @@ namespace BaiduMapAPI.APIs.Ros.V3.Scheduler.FastOrder
     /// </summary>
     public class Get:Models.GetWithoutSNRequest<GetResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v3/scheduler/fastorder";
 
         /// <summary>

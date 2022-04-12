@@ -18,6 +18,9 @@ namespace BaiduMapAPI.APIs.ReverseGeocoding.V3
         {
             this.Output = "json";
         }
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/reverse_geocoding/v3/";
 
         /// <summary>

@@ -10,6 +10,9 @@ namespace BaiduMapAPI.APIs.Ros.V2.Matrix
     /// </summary>
     public class Get : Models.GetWithoutSNRequest<V1.Matrix.PostResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v2/matrix";
 
         /// <summary>

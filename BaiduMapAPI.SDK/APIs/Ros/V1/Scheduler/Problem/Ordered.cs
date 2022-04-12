@@ -9,6 +9,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Problem
     /// </summary>
     public class Ordered : Models.JsonPostWithoutSN<OrderedResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v1/scheduler/problem/ordered";
 
         /// <summary>

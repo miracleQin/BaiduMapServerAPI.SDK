@@ -9,6 +9,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Multidepot
     /// </summary>
     public class Post : Models.JsonPostWithoutSN<PostResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v1/scheduler/multidepot";
 
         /// <summary>
@@ -72,7 +75,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Multidepot
         [Newtonsoft.Json.JsonProperty("vehicleGroups")]
         public List<MultiDepotExternalVehicleGroup> VehicleGroups { get; set; }
     }
-
+    /// <summary>
+    /// 仓库信息
+    /// </summary>
     public class MultiDepotExternalDepot
     {
         /// <summary>
@@ -91,12 +96,16 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Multidepot
 
 
     }
-
+    /// <summary>
+    /// 车辆型号信息
+    /// </summary>
     public class ExternalVehicleModel : Problem.VehicleModel
     {
 
     }
-
+    /// <summary>
+    /// 网点信息
+    /// </summary>
     public class MultiDepotExternalServiceJob
     {
         /// <summary>
@@ -160,7 +169,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Scheduler.Multidepot
         [Newtonsoft.Json.JsonProperty("priority")]
         public int? Priority { get; set; }
     }
-
+    /// <summary>
+    /// 车辆信息
+    /// </summary>
     public class MultiDepotExternalVehicleGroup : Problem.VehicleGroup
     {
 

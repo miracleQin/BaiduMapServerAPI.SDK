@@ -11,11 +11,25 @@ namespace BaiduMapAPI.Models.JsonConverter
     /// </summary>
     public class StatsConfidenceListConverter : Newtonsoft.Json.JsonConverter
     {
+
+        /// <summary>
+        /// 判断是否能转换
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <returns></returns>
         public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(List<APIs.RecogAddress.V1.StatsConfidence>);
         }
 
+        /// <summary>
+        /// 从 JSON 中读取
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="objectType"></param>
+        /// <param name="existingValue"></param>
+        /// <param name="serializer"></param>
+        /// <returns></returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             object result = null;
@@ -45,6 +59,12 @@ namespace BaiduMapAPI.Models.JsonConverter
             return result;
         }
 
+        /// <summary>
+        /// 写入 JSON
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="value"></param>
+        /// <param name="serializer"></param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value != null && CanConvert(value.GetType()))

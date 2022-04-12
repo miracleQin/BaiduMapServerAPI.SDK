@@ -4,6 +4,9 @@ using System.Text;
 
 namespace BaiduMapAPI.APIs.Weather.V1
 {
+    /// <summary>
+    /// 国内经纬度天气查询 结果
+    /// </summary>
     public class GetResult : Models.ResponseOld
     {
         /// <summary>
@@ -13,6 +16,9 @@ namespace BaiduMapAPI.APIs.Weather.V1
         public WeatherResult Result { get; set; }
     }
 
+    /// <summary>
+    /// 天气信息
+    /// </summary>
     public class WeatherResult 
     {
         /// <summary>

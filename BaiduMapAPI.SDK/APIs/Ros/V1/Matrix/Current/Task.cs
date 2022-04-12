@@ -9,6 +9,9 @@ namespace BaiduMapAPI.APIs.Ros.V1.Matrix.Current
     /// </summary>
     public class Task : Models.GetWithoutSNRequest<PostResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/ros/v1/matrix/current/task";
 
 

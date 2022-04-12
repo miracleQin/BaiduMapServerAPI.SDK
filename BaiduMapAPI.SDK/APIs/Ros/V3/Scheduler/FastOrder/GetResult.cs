@@ -22,6 +22,9 @@ namespace BaiduMapAPI.APIs.Ros.V3.Scheduler.FastOrder
         public FastSolution Solution { get; set; }
     }
 
+    /// <summary>
+    /// 结果方案
+    /// </summary>
     public class FastSolution 
     {
         /// <summary>

@@ -19,6 +19,11 @@ namespace BaiduMapAPI.Models
         /// </summary>
         public decimal? Min { get; set; }
 
+        /// <summary>
+        /// 转成字符串格式
+        /// <para>格式：{min},{max}</para>
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Min.HasValue || Max.HasValue ? $"{Min},{Max}" : "";

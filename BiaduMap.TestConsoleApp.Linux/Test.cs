@@ -318,7 +318,7 @@ public static class Test
     [Display(ShortName = "si", Name = "静态地图")]
     public static void TestStaticimage(string ak, string sk)
     {
-        
+
 
         //获取坐标
         Func<BaiduMapAPI.APIs.Staticimage.V2.Center> getCenter = () =>
@@ -503,6 +503,186 @@ public static class Test
         Console.ReadLine();
     }
 
+    [Display(ShortName = "ConvertYingYanEntityList", Name = "测试转换鹰眼实体列表对象")]
+    public static void TestConvertYingYanEntityList()
+    {
+        string json = "{\"status\": 0,\"message\": \"成功\",\"size\": 2,\"total\": 2,\"entities\": [{\"entity_name\": \"小王\",\"create_time\": \"2016-11-01 11:56:32\",\"modify_time\": \"2016-11-01 13:27:59\",\"latest_location\": {\"loc_time\": 1477978078,\"longitude\": 116.3189288575,\"latitude\": 40.04780579193,\"direction\": 64,\"height\": 53,\"radius\": 4,\"speed\": 37.73},\"city\": \"北京\",\"district\": \"海淀\",\"entity_desc\": \"小王_01\"},{\"entity_name\": \"小明\",\"create_time\": \"2017-03-15 15:56:04\",\"modify_time\": \"2017-06-01 14:01:31\",\"latest_location\": {\"loc_time\": 1488785466,\"longitude\": 116.45644006808,\"latitude\": 39.929082990815,\"direction\": 12,\"height\": 113.76,\"radius\": 3,\"speed\": 15.23},\"city\": \"北京\",\"district\": \"海淀\",\"entity_desc\": \"小明_01\"}]}";
+
+        var model = Newtonsoft.Json.JsonConvert.DeserializeObject<BaiduMapAPI.YingYan.V3.Entity.ListResult>(json);
+
+        Console.ReadLine();
+    }
+
+    [Display(ShortName = "addEntity", Name = "添加鹰眼实体")]
+    public static void TestYingYanAddEntity(string ak)
+    {
+        BaiduMapAPI.YingYan.V3.Entity.Add add = new BaiduMapAPI.YingYan.V3.Entity.Add()
+        {
+
+        };
+
+        add.ServiceID = GetInputInt("请输入服务ID:", 1, int.MaxValue);
+        add.EntityName = GetInputString("请输入实体名称:");
+        add.EntityDescription = GetInputString("请输入实体描述:");
+
+        if (GetInputBool("是否输入自定义字段信息？", "Y", "N"))
+        {
+            add.CustomColumnValues = new Dictionary<string, string>();
+            do
+            {
+                add.CustomColumnValues.Add(GetInputString("请输入 Column 名称:"), GetInputString("请输入值:"));
+            } while (GetInputBool("是否继续添加自定字段？", "Y", "N"));
+        }
+
+        var addResult = add.GetResult(ak);
+
+        Console.WriteLine($"Status -> [{addResult.Status}] Message -> [{addResult.Message}]");
+
+        /*
+         * 当前请求结果：Status -> [211] Message -> [APP SN校验失败]
+         * 尚未向百度提工单询问。
+         * 
+         */
+
+        Console.ReadLine();
+    }
+
+    [Display(ShortName = "updateEntity", Name = "添加鹰眼实体")]
+    public static void TestYingYanUpdateEntity(string ak)
+    {
+        BaiduMapAPI.YingYan.V3.Entity.Update add = new BaiduMapAPI.YingYan.V3.Entity.Update()
+        {
+
+        };
+
+        add.ServiceID = GetInputInt("请输入服务ID:", 1, int.MaxValue);
+        add.EntityName = GetInputString("请输入实体名称:");
+        add.EntityDescription = GetInputString("请输入实体描述:");
+
+        if (GetInputBool("是否输入自定义字段信息？", "Y", "N"))
+        {
+            add.CustomColumnValues = new Dictionary<string, string>();
+            do
+            {
+                add.CustomColumnValues.Add(GetInputString("请输入 Column 名称:"), GetInputString("请输入值:"));
+            } while (GetInputBool("是否继续添加自定字段？", "Y", "N"));
+        }
+
+        var addResult = add.GetResult(ak);
+
+        Console.WriteLine($"Status -> [{addResult.Status}] Message -> [{addResult.Message}]");
+        /*
+         * 当前请求结果：Status -> [211] Message -> [APP SN校验失败]
+         * 尚未向百度提工单询问。
+         * 
+         */
+        Console.ReadLine();
+    }
+
+    [Display(ShortName = "rectify", Name = "轨迹纠偏")]
+    public static void TestRectify(string ak, string sk)
+    {
+        BaiduMapAPI.APIs.Track.V1.Rectify rectify = new BaiduMapAPI.APIs.Track.V1.Rectify();
+
+        Console.WriteLine("请选择里程补偿设置:");
+        rectify.SupplementMode = GetEnumValue<BaiduMapAPI.Models.Enums.SupplementMode>();
+        rectify.RectifyOption = new BaiduMapAPI.APIs.Track.V1.RectifyOption();
+
+        Console.WriteLine("请选择去噪力度:");
+        rectify.RectifyOption.DenoiseGrade = GetEnumValue<BaiduMapAPI.Models.Enums.DenoiseGrade>();
+        rectify.RectifyOption.NeedMapmatch = GetInputBool("是否需要将轨迹点绑路并补充道路形状点？", "Y", "N");
+
+        Console.WriteLine("请选择交通方式:");
+        rectify.RectifyOption.TransportMode = GetEnumValue<BaiduMapAPI.Models.Enums.TransportMode>();
+
+        Console.WriteLine("请选择抽稀力度");
+        rectify.RectifyOption.VacuateGrade = GetEnumValue<BaiduMapAPI.Models.Enums.VacuateGrade>();
+
+        rectify.PointList = new List<BaiduMapAPI.APIs.Track.V1.RectifyPoint>();
+
+        do
+        {
+            BaiduMapAPI.APIs.Track.V1.RectifyPoint point = new BaiduMapAPI.APIs.Track.V1.RectifyPoint();
+
+            Console.WriteLine("请选择轨迹点的坐标系:");
+            point.CoordTypeInput = GetEnumValue<BaiduMapAPI.Models.Enums.CoordType>() ?? BaiduMapAPI.Models.Enums.CoordType.bd09ll;
+
+
+           
+
+            point.Latitude = GetInputDouble("请输入轨迹点纬度:", double.MinValue, double.MaxValue);
+            point.Longitude = GetInputDouble("请输入轨迹点经度:", double.MinValue, double.MaxValue);
+
+            point.LocalTime = GetInputDateTime("请输入轨迹时间点:");
+
+            if (GetInputBool("是否填写轨迹点的方向？", "Y", "N"))
+                point.Direction = GetInputDouble("请输入轨迹点的方向[0-359]:", 0, 360);
+
+            if (GetInputBool("是否填写轨迹点的高度？", "Y", "N"))
+                point.Height = GetInputDouble("请输入轨迹点的高度:", 0, double.MaxValue);
+
+            if (GetInputBool("是否填写定位精度？", "Y", "N"))
+                point.Radius = GetInputInt("请输入精度(米):", 0, int.MaxValue);
+
+            if (GetInputBool("是否填写时速？", "Y", "N"))
+                point.Speed = GetInputDouble("请填写时速(km/h):", 0, double.MaxValue);
+
+            rectify.PointList.Add(point);
+        } while (GetInputBool("是否继续添加轨迹点？", "Y", "N"));
+
+
+        var rectifyResult = rectify.GetResult(ak, sk);
+
+        Console.WriteLine($"result.Status -> [{rectifyResult.Status}] result.Message -> [{rectifyResult.Message}]");
+
+        Console.ReadLine();
+    }
+
+    public static void TestConvertAddPointsResult() 
+    {
+        string json = "{\"status\":2,\"message\":\"point_list中没有符合条件的point\",\"fail_info\":{\"param_error\":[{\"entity_name\":\"22.858367\",\"latitude\":108.267962,\"error\":\"entity_name 类型不匹配\"}],\"internal_error\":[]},\"success_num\":0}";
+        var result= Newtonsoft.Json.JsonConvert.DeserializeObject<BaiduMapAPI.YingYan.V3.Track.AddPointsResult>(json);
+        Console.ReadLine();
+    }
+
+    private static DateTime GetInputDateTime(string text)
+    {
+        DateTime result;
+        do Console.Write(text);
+        while (!DateTime.TryParse(Console.ReadLine() + "", out result));
+        return result;
+    }
+
+    /// <summary>
+    /// 获取输入的 bool 值
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="yesValue"></param>
+    /// <param name="noValue"></param>
+    /// <returns></returns>
+    private static bool GetInputBool(string text, string yesValue, string noValue)
+    {
+    Retry:
+        Console.Write($"{text}[{yesValue}/{noValue}]:");
+
+        var val = Console.ReadLine() + "";
+
+        if (val.Equals(yesValue, StringComparison.InvariantCultureIgnoreCase)) return true;
+        else if (val.Equals(noValue, StringComparison.InvariantCultureIgnoreCase)) return false;
+        else goto Retry;
+    }
+
+    /// <summary>
+    /// 获取输入的 string 值
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    private static string GetInputString(string text)
+    {
+        Console.Write(text);
+        return Console.ReadLine() + "";
+    }
+
     /// <summary>
     /// 获取输入的 int 值
     /// </summary>
@@ -558,4 +738,6 @@ public static class Test
 
         return result;
     }
+
+
 }

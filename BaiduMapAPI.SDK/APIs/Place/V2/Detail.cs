@@ -10,8 +10,13 @@ namespace BaiduMapAPI.APIs.Place.V2
     /// </summary>
     public class Detail : Models.GetRequest<DetailResult>
     {
+        /// <summary>
+        /// 接口地址
+        /// </summary>
         public override string URL => "https://api.map.baidu.com/place/v2/detail";
-
+        /// <summary>
+        /// 地点详情检索服务
+        /// </summary>
         public Detail() 
         {
             this.Timestamp = DateTime.Now;

@@ -21,6 +21,13 @@ namespace System.Text
             return string.IsNullOrEmpty(json) ? default : Newtonsoft.Json.JsonConvert.DeserializeObject<TModel>(json);
         }
 
+        private static Newtonsoft.Json.JsonSerializerSettings Setting = new Newtonsoft.Json.JsonSerializerSettings()
+        {
+            NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local,
+            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        };
+
         /// <summary>
         /// 将对象转为 Json 字符串
         /// </summary>
@@ -28,9 +35,7 @@ namespace System.Text
         /// <returns></returns>
         internal static string ToJson(this object obj)
         {
-
-
-            return obj == null ? null : Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented, new Newtonsoft.Json.JsonSerializerSettings() { NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore });
+            return obj == null ? null : Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented, Setting);
         }
     }
 }
