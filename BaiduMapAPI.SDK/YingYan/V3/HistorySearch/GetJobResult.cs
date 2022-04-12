@@ -15,7 +15,14 @@ namespace BaiduMapAPI.YingYan.V3.HistorySearch
     public class GetJobResult : Models.ResponseOld
     {
         /// <summary>
+        /// 总结果数
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("total")]
+        public int? Total { get; set; }
+
+        /// <summary>
         /// 任务
+        /// <para>若对应任务状态为 done 的，可调用 GetResultAsync()/GetResult() 函数获取任务中的坐标信息</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("jobs")]
         public List<Job> Jobs { get; set; }
