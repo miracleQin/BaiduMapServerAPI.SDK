@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BaiduMapAPI.Utilities
 {
@@ -20,7 +22,7 @@ namespace BaiduMapAPI.Utilities
         {
             string result = null;
             Exception exception = null;
-            using(System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.MD5.Create())
+            using (System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.MD5.Create())
             {
                 try
                 {
@@ -32,8 +34,8 @@ namespace BaiduMapAPI.Utilities
                     exception = ex;
                 }
             }
-            if (exception != null) 
-                throw new Exception("在给字符串做MD5签名的过程中发生异常",exception);
+            if (exception != null)
+                throw new Exception("在给字符串做MD5签名的过程中发生异常", exception);
             return result;
         }
         internal static string UrlEncode(string str)
@@ -226,6 +228,26 @@ namespace BaiduMapAPI.Utilities
             var enumType = typeof(TEnum);
             var fieldType = enumType.GetField(enumField.ToString());
             result = fieldType.GetCustomAttribute<CustomDescriptionAttribute>();
+            return result;
+        }
+
+        /// <summary>
+        /// 复制流
+        /// </summary>
+        /// <param name="tagStream">原流对象</param>
+        /// <returns></returns>
+        internal static async Task<Stream> CloneAsync(this Stream tagStream)
+        {
+            MemoryStream result = new MemoryStream();
+            int bufferLength = 0;
+            byte[] buffer = new byte[bufferLength];
+
+            tagStream.Position = 0;
+
+            while ((bufferLength = await tagStream.ReadAsync(buffer, 0, bufferLength)) > 0)
+                await result.WriteAsync(buffer, 0, bufferLength);
+
+            result.Position = 0;
             return result;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,21 @@ namespace BaiduMapAPI.Utilities
 
             client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "BaiduMapAPISDK");
             return client;
+        }
+
+        /// <summary>
+        /// 获取响应信息
+        /// </summary>
+        /// <param name="url">请求地址</param>
+        /// <returns></returns>
+        internal static async Task<HttpResponseMessage> GetResponseMessageAsync(string url)
+        {
+            HttpResponseMessage result = null;
+            using (var client = CreateClient())
+            {
+                result = await client.GetAsync(url);
+            }
+            return result;
         }
 
         /// <summary>
@@ -160,7 +176,7 @@ namespace BaiduMapAPI.Utilities
 
                 result = await requestMsg.SendAndGetResultAsync<TResponse>();
             }
-                
+
             return result;
         }
 
