@@ -57,3 +57,4 @@ var result = search.GetResult(AK, SK);
 26 | BaiduMapAPI.YingYan.V3.Toll | [鹰眼-ETC费用计算服务](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/toll)
 29 | BaiduMapAPI.YingYan.V3.Fence | [鹰眼-围栏管理](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/geofence)、[鹰眼-地理围栏报警](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/geofencealarm)
 30 | BaiduMapAPI.YingYan.V3.Export | [鹰眼-批量导出轨迹](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/trackexport)
+31 | BaiduMapAPI.YingYan.V3.HistorySearch | [鹰眼-历史轨迹搜索](https://lbsyun.baidu.com/index.php?title=yingyan/api/v3/historicaltrack)
