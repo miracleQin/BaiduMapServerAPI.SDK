@@ -13,6 +13,6 @@ namespace BaiduMapAPI.APIs.Place.V2
         /// 详情结果集
         /// </summary>
         [Newtonsoft.Json.JsonProperty("result")]
-        public List<SearchResultItem> Result { get; set; }
+        public SearchResultItem Result { get; set; }
     }
 }
