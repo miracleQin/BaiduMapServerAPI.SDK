@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiduMapAPI.Models.JsonConverter;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -98,7 +99,7 @@ namespace BaiduMapAPI.YingYan.V3.Entity
         /// <para>该时间为Unix时间，未加时区</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("loc_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? LocationTime { get; set; }
 
 

@@ -120,8 +120,7 @@ namespace BaiduMapAPI.YingYan.V3.Track
         /// </para>
         /// </summary>
         [Display(Name = "sort_type")]
-        [CustomDescriptionConverter]
-        public Models.Enums.SortRule? SortType { get; set; }
+        public SortType? SortType { get; set; }
 
         /// <summary>
         /// 分页索引
@@ -138,6 +137,23 @@ namespace BaiduMapAPI.YingYan.V3.Track
         /// </summary>
         [Display(Name = "page_size")]
         public int? PageSize { get; set; }
+    }
+
+    /// <summary>
+    /// 排序方式
+    /// </summary>
+    public enum SortType 
+    {
+        /// <summary>
+        /// 按定位时间升序
+        /// </summary>
+        [Description("按定位时间升序")]
+        asc=0,
+        /// <summary>
+        /// 按定位时间降序
+        /// </summary>
+        [Description("按定位时间降序")]
+        desc=1,
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiduMapAPI.Models.JsonConverter;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace BaiduMapAPI.APIs.Track.V1
         /// 轨迹点的定位时间
         /// <para>使用UNIX时间戳（秒级）</para>
         /// </summary>
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         [Newtonsoft.Json.JsonProperty("loc_time")]
         public DateTime LocalTime { get; set; }
 

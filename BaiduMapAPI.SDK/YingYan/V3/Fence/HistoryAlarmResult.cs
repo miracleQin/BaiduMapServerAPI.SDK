@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiduMapAPI.Models.JsonConverter;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -111,7 +112,7 @@ namespace BaiduMapAPI.YingYan.V3.Fence
         /// <para>即使触发围栏的轨迹点未实时上传，由于轨迹点中携带了 loc_time，鹰眼仍能根据 loc_time判断围栏实际触发时间。</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("loc_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? LocationTime { get; set; }
 
         /// <summary>
@@ -119,7 +120,7 @@ namespace BaiduMapAPI.YingYan.V3.Fence
         /// <para>由于鹰眼 API 围栏为服务端围栏，即只有当轨迹点上传鹰眼服务端时，才能进行围栏触发判断。因此服务端接收到报警的时间可能由于轨迹点上传的不及时性，而晚于围栏实际触发时间 loc_time。例如，轨迹点实际触发围栏时间为13:00，但若由于各种原因，轨迹点上传至服务端进行围栏计算的时间为14:00，则该报警的 create_time为14:00。</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("create_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? CreateTime { get; set; }
 
 

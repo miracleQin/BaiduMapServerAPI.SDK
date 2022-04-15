@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiduMapAPI.Models.JsonConverter;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -39,7 +40,7 @@ namespace BaiduMapAPI.YingYan.V3.Track
         /// <para>且输入的loc_time不能小于当前服务端时间1年以上，即不支持存1年以前的轨迹点。</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("loc_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? LocationTime { get; set; }
 
         /// <summary>
