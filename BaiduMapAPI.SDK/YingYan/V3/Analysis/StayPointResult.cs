@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiduMapAPI.Models.JsonConverter;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -34,14 +35,14 @@ namespace BaiduMapAPI.YingYan.V3.Analysis
         /// 停留开始时间
         /// </summary>
         [Newtonsoft.Json.JsonProperty("start_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// 停留结束时间
         /// </summary>
         [Newtonsoft.Json.JsonProperty("end_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? EndTime { get; set; }
 
         /// <summary>

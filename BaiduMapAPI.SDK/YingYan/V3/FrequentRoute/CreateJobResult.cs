@@ -131,7 +131,7 @@ namespace BaiduMapAPI.YingYan.V3.FrequentRoute
         /// <para>若是鹰眼通过绑路补充的道路形状点（标识为_supplement=1），则loc_time使用了前序原始轨迹点的定位时间</para>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("loc_time")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.UnixDateTimeConverter))]
+        [Newtonsoft.Json.JsonConverter(typeof(UnixDateTimeNoUTCConverter))]
         public DateTime? LocationTime { get; set; }
 
         /// <summary>

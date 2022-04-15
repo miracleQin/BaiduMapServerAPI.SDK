@@ -4,9 +4,9 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>BaiduMapAPI</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyVersion>1.0.1.1</AssemblyVersion>
-		<FileVersion>1.0.1.1</FileVersion>
-		<VersionPrefix>1.0.1</VersionPrefix>
+		<AssemblyVersion>1.0.2.0</AssemblyVersion>
+		<FileVersion>1.0.2.0</FileVersion>
+		<VersionPrefix>1.0.2</VersionPrefix>
 		<Authors>狮主</Authors>
 		<Description>百度地图服务端API对接工具</Description>
 		<PackageProjectUrl>https://github.com/miracleQin/BaiduMapServerAPI.SDK</PackageProjectUrl>
@@ -17,7 +17,7 @@
 		<Copyright>LeoncinoQin</Copyright>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<PackageReleaseNotes>1. 增加鹰眼轨迹服务接口对接实现；2. 修复轻型驾车路线规划途经点BUG；3. 补全部分缺失注释信息。</PackageReleaseNotes>
+		<PackageReleaseNotes>百度地图服务端 WebAPI 对接工具包。</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

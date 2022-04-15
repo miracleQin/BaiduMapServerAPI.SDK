@@ -64,6 +64,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
         /// 规划策略
         /// </summary>
         [Display(Name ="tactics")]
+        [EnumValue]
         public Models.Enums.TacticsDetail Tactics { get; set; }
 
         /// <summary>
@@ -140,7 +141,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
         /// </summary>
         [Models.Attributes.UnixDateTimeConverter]
         [Display(Name = "timestamp")]
-        public DateTime Timestamp { get; set; } = DateTime.Now;
+        public DateTime? Timestamp { get; set; } = DateTime.Now;
 
         /// <summary>
         /// 输出类型

@@ -149,12 +149,20 @@ namespace BiaduMap.TestConsoleApp.Linux
                 if (!double.TryParse(Console.ReadLine(), out val)) goto SetValue;
                 result = val;
             }
+            else if (type_valueType == typeof(decimal))
+            {
+                Console.Write($"请输入数值:");
+                decimal val;
+                if (!decimal.TryParse(Console.ReadLine(), out val)) goto SetValue;
+                result = val;
+            }
             else if (type_valueType == typeof(bool))
             {
                 Console.Write($"请输入数值[Y/N]:");
                 bool val;
-                if ((Console.ReadLine() + "").Equals("y", StringComparison.CurrentCultureIgnoreCase)) val = true;
-                else if((Console.ReadLine() + "").Equals("n", StringComparison.CurrentCultureIgnoreCase)) val = false;
+                var input = Console.ReadLine() + "";
+                if (input.Equals("y", StringComparison.CurrentCultureIgnoreCase)) val = true;
+                else if(input.Equals("n", StringComparison.CurrentCultureIgnoreCase)) val = false;
                 else goto SetValue;
                 result = val;
             }
