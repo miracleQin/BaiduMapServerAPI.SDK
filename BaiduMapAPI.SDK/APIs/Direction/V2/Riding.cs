@@ -80,7 +80,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
         /// </summary>
         [Models.Attributes.UnixDateTimeConverter]
         [Display(Name = "timestamp")]
-        public DateTime Timestamp { get; set; } = DateTime.Now;
+        public DateTime? Timestamp { get; set; } = DateTime.Now;
 
         /// <summary>
         /// 输出类型

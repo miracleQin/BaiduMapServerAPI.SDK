@@ -80,6 +80,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
         /// 路线偏好
         /// </summary>
         [Display(Name = "tactics")]
+        [EnumValue]
         public Models.Enums.DirectionDrivingTactics? Tactics { get; set; }
 
         /// <summary>
@@ -173,7 +174,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
         /// <para>配合gps_direction字段使用，当speed>1.5米/秒且gps_direction存在时，采用gps_direction的方向。</para>
         /// </summary>
         [Display(Name = "speed")]
-        public double? Speed{ get; set; }
+        public double? Speed { get; set; }
 
         /// <summary>
         /// 时间戳，与SN配合使用
@@ -181,7 +182,7 @@ namespace BaiduMapAPI.APIs.Direction.V2
         /// </summary>
         [Models.Attributes.UnixDateTimeConverter]
         [Display(Name = "timestamp")]
-        public DateTime Timestamp { get; set; } = DateTime.Now;
+        public DateTime? Timestamp { get; set; } = DateTime.Now;
 
         /// <summary>
         /// 输出类型
